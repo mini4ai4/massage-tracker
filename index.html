@@ -498,32 +498,50 @@
     const HOURLY_RATE = 40;
     let currentBiweekIndex = 0;
 
-    // Biweekly periods (every 2 weeks, starting from a known payroll date)
-    // Assuming payroll is every other Monday
+    // Biweekly periods: 1-15 and 16-end of month
     function getBiweeklyPeriods() {
         const periods = [];
         const dates = [...new Set(visits.map(v => v.date))].sort();
         if (dates.length === 0) return periods;
 
-        // Start from first date, round to beginning of week
-        let startDate = new Date(dates[0]);
-        startDate.setDate(startDate.getDate() - startDate.getDay()); // Go to Sunday
+        // Get min and max months
+        const minDate = new Date(dates[0]);
+        const maxDate = new Date(dates[dates.length - 1]);
 
-        const endDate = new Date(dates[dates.length - 1]);
-        endDate.setDate(endDate.getDate() + 14);
+        // Generate periods from min to max month
+        let year = minDate.getFullYear();
+        let month = minDate.getMonth();
 
-        while (startDate < endDate) {
-            const periodEnd = new Date(startDate);
-            periodEnd.setDate(periodEnd.getDate() + 13);
+        while (year < maxDate.getFullYear() || (year === maxDate.getFullYear() && month <= maxDate.getMonth())) {
+            // First half: 1-15
+            const firstStart = new Date(year, month, 1);
+            const firstEnd = new Date(year, month, 15);
+
+            // Second half: 16-end
+            const secondStart = new Date(year, month, 16);
+            const secondEnd = new Date(year, month + 1, 0); // Last day of month
 
             periods.push({
-                start: new Date(startDate),
-                end: new Date(periodEnd),
-                startStr: startDate.toISOString().split('T')[0],
-                endStr: periodEnd.toISOString().split('T')[0]
+                start: firstStart,
+                end: firstEnd,
+                startStr: firstStart.toISOString().split('T')[0],
+                endStr: firstEnd.toISOString().split('T')[0],
+                label: `1-15 ${firstStart.toLocaleDateString('ru-RU', { month: 'short', year: 'numeric' })}`
             });
 
-            startDate.setDate(startDate.getDate() + 14);
+            periods.push({
+                start: secondStart,
+                end: secondEnd,
+                startStr: secondStart.toISOString().split('T')[0],
+                endStr: secondEnd.toISOString().split('T')[0],
+                label: `16-${secondEnd.getDate()} ${secondStart.toLocaleDateString('ru-RU', { month: 'short', year: 'numeric' })}`
+            });
+
+            month++;
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
         }
 
         return periods.reverse(); // Most recent first
@@ -569,7 +587,7 @@
 
             return `
                 <div class="biweek-item ${i === currentBiweekIndex ? 'current' : ''}" onclick="selectBiweek(${i})">
-                    <div class="biweek-dates">${formatDateShort(p.start)} — ${formatDateShort(p.end)}</div>
+                    <div class="biweek-dates">${p.label || (formatDateShort(p.start) + ' — ' + formatDateShort(p.end))}</div>
                     <div class="biweek-amount">$${earnings}</div>
                 </div>
             `;
@@ -590,7 +608,7 @@
         const hours = (totalMinutes / 60).toFixed(1);
         const earnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
 
-        document.getElementById('paycheckPeriod').textContent =
+        document.getElementById('paycheckPeriod').textContent = p.label ||
             `${formatDateShort(p.start)} — ${formatDateShort(p.end)}`;
         document.getElementById('paycheckAmount').textContent = `$${earnings}`;
         document.getElementById('paycheckHours').textContent = `${hours} часов | ${periodVisits.length} визитов`;
