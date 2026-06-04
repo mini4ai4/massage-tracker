@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -288,10 +288,10 @@
         <h1>💆 Roman LMT Tracker</h1>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('paycheck')">💰 Зарплата</button>
-            <button class="tab" onclick="showTab('days')">📅 По дням</button>
-            <button class="tab" onclick="showTab('patients')">👥 Пациенты</button>
-            <button class="tab" onclick="showTab('stats')">📊 Статистика</button>
+            <button class="tab active" onclick="showTab('paycheck')">💰 Paycheck</button>
+            <button class="tab" onclick="showTab('days')">📅 Days</button>
+            <button class="tab" onclick="showTab('patients')">👥 Patients</button>
+            <button class="tab" onclick="showTab('stats')">📊 Stats</button>
         </div>
 
         <!-- Paycheck (Biweekly) -->
@@ -308,7 +308,7 @@
             </div>
 
             <div class="card">
-                <h2>📋 Все платёжные периоды</h2>
+                <h2>📋 All Pay Periods</h2>
                 <div class="biweek-list" id="biweekList"></div>
             </div>
         </div>
@@ -318,16 +318,16 @@
             <div class="stats-grid">
                 <div class="stat-box">
                     <div class="number" id="totalHours">0</div>
-                    <div class="label">Часов всего</div>
+                    <div class="label">Total Hours</div>
                 </div>
                 <div class="stat-box">
                     <div class="number" id="totalEarnings">$0</div>
-                    <div class="label">Заработано</div>
+                    <div class="label">Earned</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>📅 Рабочие дни</h2>
+                <h2>📅 Work Days</h2>
                 <div class="filter-row">
                     <input type="date" id="dateFrom" onchange="updateDaysView()">
                     <input type="date" id="dateTo" onchange="updateDaysView()">
@@ -339,18 +339,18 @@
         <!-- Patients -->
         <div id="patients" class="tab-content hidden">
             <div class="card">
-                <h2>👥 Поиск пациента</h2>
+                <h2>👥 Search Patient</h2>
                 <div class="filter-row">
-                    <input type="text" id="patientSearch" placeholder="Введите имя..." oninput="filterPatients()">
+                    <input type="text" id="patientSearch" placeholder="Enter name..." oninput="filterPatients()">
                 </div>
                 <select id="patientSelect" onchange="showPatientHistory()" style="width:100%;margin-bottom:16px;">
-                    <option value="">— Выберите пациента —</option>
+                    <option value="">— Select patient —</option>
                 </select>
 
                 <div id="patientInfo" class="hidden">
                     <div class="patient-summary">
                         <h3 id="patientName"></h3>
-                        <p>📅 Визитов: <strong id="patientVisits">0</strong> | ⏱ <strong id="patientHours">0</strong>ч | 💰 <strong id="patientEarnings" class="money">$0</strong></p>
+                        <p>📅 Visits: <strong id="patientVisits">0</strong> | ⏱ <strong id="patientHours">0</strong>h | 💰 <strong id="patientEarnings" class="money">$0</strong></p>
                         <p style="font-size:13px;color:#666;" id="patientPeriod"></p>
                     </div>
                     <div id="patientHistoryContainer"></div>
@@ -363,28 +363,28 @@
             <div class="stats-grid">
                 <div class="stat-box">
                     <div class="number" id="statVisits">0</div>
-                    <div class="label">Всего визитов</div>
+                    <div class="label">Total Visits</div>
                 </div>
                 <div class="stat-box">
                     <div class="number" id="statHours">0</div>
-                    <div class="label">Часов работы</div>
+                    <div class="label">Work Hours</div>
                 </div>
                 <div class="stat-box">
                     <div class="number" id="statEarnings">$0</div>
-                    <div class="label">Заработано</div>
+                    <div class="label">Earned</div>
                 </div>
                 <div class="stat-box">
                     <div class="number" id="statPatients">0</div>
-                    <div class="label">Пациентов</div>
+                    <div class="label">Patients</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>📊 По периодам</h2>
+                <h2>📊 By Period</h2>
                 <div class="filter-row">
                     <select id="statsPeriod" onchange="updateStats()">
-                        <option value="week">По неделям</option>
-                        <option value="month">По месяцам</option>
+                        <option value="week">By Week</option>
+                        <option value="month">By Month</option>
                     </select>
                 </div>
                 <div id="statsTable"></div>
@@ -498,6 +498,37 @@
     const HOURLY_RATE = 40;
     let currentBiweekIndex = 0;
 
+    // Format time range: "6:00 PM" + 30min = "6:00 - 6:30 PM"
+    function formatTimeRange(startTime, durationMin) {
+        // Parse start time
+        const match = startTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
+        if (!match) return startTime;
+
+        let hours = parseInt(match[1]);
+        let minutes = parseInt(match[2]);
+        const period = match[3].toUpperCase();
+
+        // Convert to 24h for calculation
+        let hours24 = hours;
+        if (period === 'PM' && hours !== 12) hours24 += 12;
+        if (period === 'AM' && hours === 12) hours24 = 0;
+
+        // Add duration
+        const totalMinutes = hours24 * 60 + minutes + durationMin;
+        let endHours24 = Math.floor(totalMinutes / 60) % 24;
+        let endMinutes = totalMinutes % 60;
+
+        // Convert back to 12h
+        let endPeriod = endHours24 >= 12 ? 'PM' : 'AM';
+        let endHours12 = endHours24 % 12;
+        if (endHours12 === 0) endHours12 = 12;
+
+        const startStr = `${hours}:${String(minutes).padStart(2, '0')}`;
+        const endStr = `${endHours12}:${String(endMinutes).padStart(2, '0')} ${endPeriod}`;
+
+        return `${startStr} - ${endStr}`;
+    }
+
     // Biweekly periods: 1-15 and 16-end of month
     function getBiweeklyPeriods() {
         const periods = [];
@@ -526,7 +557,7 @@
                 end: firstEnd,
                 startStr: firstStart.toISOString().split('T')[0],
                 endStr: firstEnd.toISOString().split('T')[0],
-                label: `1-15 ${firstStart.toLocaleDateString('ru-RU', { month: 'short', year: 'numeric' })}`
+                label: `1-15 ${firstStart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`
             });
 
             periods.push({
@@ -534,7 +565,7 @@
                 end: secondEnd,
                 startStr: secondStart.toISOString().split('T')[0],
                 endStr: secondEnd.toISOString().split('T')[0],
-                label: `16-${secondEnd.getDate()} ${secondStart.toLocaleDateString('ru-RU', { month: 'short', year: 'numeric' })}`
+                label: `16-${secondEnd.getDate()} ${secondStart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`
             });
 
             month++;
@@ -548,13 +579,13 @@
     }
 
     function formatDateShort(date) {
-        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     }
 
     function formatDateFull(dateStr) {
         const d = new Date(dateStr);
-        const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
-        return `${days[d.getDay()]}, ${d.getDate()} ${d.toLocaleDateString('ru-RU', { month: 'short' })}`;
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return `${days[d.getDay()]}, ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
     }
 
     // Tab switching
@@ -611,7 +642,7 @@
         document.getElementById('paycheckPeriod').textContent = p.label ||
             `${formatDateShort(p.start)} — ${formatDateShort(p.end)}`;
         document.getElementById('paycheckAmount').textContent = `$${earnings}`;
-        document.getElementById('paycheckHours').textContent = `${hours} часов | ${periodVisits.length} визитов`;
+        document.getElementById('paycheckHours').textContent = `${hours} hours | ${periodVisits.length} visits`;
 
         // Update list selection
         document.querySelectorAll('.biweek-item').forEach((el, i) => {
@@ -684,9 +715,9 @@
                     })
                     .map(v => `
                         <div class="visit-item">
-                            <span class="visit-time">${v.time}</span>
+                            <span class="visit-time">${formatTimeRange(v.time, v.duration)}</span>
                             <span class="visit-patient">${v.patient}</span>
-                            <span class="visit-duration">${v.duration} мин</span>
+                            <span class="visit-duration">${v.duration} min</span>
                         </div>
                         ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
                     `).join('');
@@ -715,7 +746,7 @@
     function populatePatients() {
         const patients = [...new Set(visits.map(v => v.patient))].sort();
         const select = document.getElementById('patientSelect');
-        select.innerHTML = '<option value="">— Выберите пациента —</option>' +
+        select.innerHTML = '<option value="">— Select patient —</option>' +
             patients.map(p => `<option value="${p}">${p}</option>`).join('');
     }
 
@@ -726,7 +757,7 @@
             .sort();
 
         const select = document.getElementById('patientSelect');
-        select.innerHTML = '<option value="">— Выберите пациента —</option>' +
+        select.innerHTML = '<option value="">— Select patient —</option>' +
             patients.map(p => `<option value="${p}">${p}</option>`).join('');
     }
 
@@ -763,7 +794,7 @@
                 const visitsHtml = dayVisits.map(v => `
                     <div class="visit-item">
                         <span class="visit-time">${v.time}</span>
-                        <span class="visit-duration">${v.duration} мин</span>
+                        <span class="visit-duration">${v.duration} min</span>
                     </div>
                     ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
                 `).join('');
@@ -823,7 +854,7 @@
                     <div class="day-header" style="cursor:default;">
                         <span>${period}</span>
                         <div class="stats">
-                            <span>${data.visits} виз.</span>
+                            <span>${data.visits} vis</span>
                             <span>${(data.minutes / 60).toFixed(1)}ч</span>
                             <span class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</span>
                         </div>
