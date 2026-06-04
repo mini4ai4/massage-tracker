@@ -20,23 +20,23 @@
             color: white;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 1.8em;
         }
         .tabs {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .tab {
-            padding: 12px 24px;
+            padding: 10px 16px;
             background: rgba(255,255,255,0.2);
             color: white;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s;
         }
         .tab:hover, .tab.active {
@@ -46,7 +46,7 @@
         .card {
             background: white;
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
@@ -55,73 +55,215 @@
             margin-bottom: 16px;
             border-bottom: 2px solid #667eea;
             padding-bottom: 8px;
+            font-size: 1.3em;
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin-bottom: 20px;
         }
         .stat-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
+            padding: 16px;
             border-radius: 12px;
             text-align: center;
         }
         .stat-box .number {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: bold;
         }
         .stat-box .label {
             opacity: 0.9;
-            font-size: 14px;
+            font-size: 12px;
         }
         .filter-row {
             display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
             align-items: center;
         }
         select, input {
-            padding: 10px 16px;
+            padding: 10px 14px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
-            min-width: 150px;
+            flex: 1;
+            min-width: 120px;
         }
         select:focus, input:focus {
             outline: none;
             border-color: #667eea;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
+        .day-row {
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        th, td {
-            padding: 12px;
-            text-align: left;
+        .day-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .day-header .date {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .day-header .stats {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+        }
+        .day-header .arrow {
+            transition: transform 0.3s;
+        }
+        .day-row.open .day-header .arrow {
+            transform: rotate(180deg);
+        }
+        .day-details {
+            display: none;
+            padding: 0;
+            background: white;
+        }
+        .day-row.open .day-details {
+            display: block;
+        }
+        .visit-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
             border-bottom: 1px solid #eee;
+            align-items: center;
         }
-        th {
-            background: #f8f9fa;
+        .visit-item:last-child {
+            border-bottom: none;
+        }
+        .visit-time {
+            color: #667eea;
             font-weight: 600;
-            color: #333;
+            min-width: 100px;
         }
-        tr:hover {
-            background: #f8f9fa;
+        .visit-patient {
+            flex: 1;
+            font-weight: 500;
         }
-        .note {
+        .visit-duration {
+            background: #e8f4fd;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #0066cc;
+        }
+        .visit-notes {
+            font-size: 12px;
+            color: #666;
+            padding: 4px 16px 12px;
+            background: #fffbe6;
+            border-left: 3px solid #ffc107;
+            margin: 0 16px 8px;
+            border-radius: 4px;
+        }
+        .note-badge {
             background: #fff3cd;
             padding: 4px 8px;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 11px;
             color: #856404;
+            margin-left: 8px;
         }
         .money { color: #28a745; font-weight: bold; }
         .hidden { display: none; }
+
+        /* Paycheck section */
+        .paycheck-card {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .paycheck-amount {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .paycheck-period {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        .paycheck-hours {
+            font-size: 1.2em;
+            margin-top: 8px;
+        }
+        .period-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .period-nav button {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .period-nav button:hover {
+            background: #5a6fd6;
+        }
+        .period-nav button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .biweek-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .biweek-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .biweek-item:hover {
+            background: #e9ecef;
+        }
+        .biweek-item.current {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .biweek-dates {
+            font-weight: 500;
+        }
+        .biweek-amount {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .biweek-item.current .biweek-amount {
+            color: white;
+        }
+
+        /* Patient summary */
         .patient-summary {
             background: #e8f4fd;
             padding: 16px;
@@ -132,68 +274,65 @@
             color: #0066cc;
             margin-bottom: 8px;
         }
+
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: 1fr 1fr; }
-            .filter-row { flex-direction: column; }
-            select, input { width: 100%; }
-            th, td { padding: 8px; font-size: 13px; }
+            .day-header .stats { gap: 10px; font-size: 12px; }
+            .visit-item { flex-wrap: wrap; gap: 8px; }
+            h1 { font-size: 1.5em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💆 Roman LMT — Massage Tracker</h1>
+        <h1>💆 Roman LMT Tracker</h1>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('dashboard')">📊 Dashboard</button>
+            <button class="tab active" onclick="showTab('paycheck')">💰 Зарплата</button>
+            <button class="tab" onclick="showTab('days')">📅 По дням</button>
             <button class="tab" onclick="showTab('patients')">👥 Пациенты</button>
-            <button class="tab" onclick="showTab('hours')">⏱ Рабочие часы</button>
-            <button class="tab" onclick="showTab('all')">📋 Все визиты</button>
+            <button class="tab" onclick="showTab('stats')">📊 Статистика</button>
         </div>
 
-        <!-- Dashboard -->
-        <div id="dashboard" class="tab-content">
+        <!-- Paycheck (Biweekly) -->
+        <div id="paycheck" class="tab-content">
+            <div class="paycheck-card" id="currentPaycheck">
+                <div class="paycheck-period" id="paycheckPeriod"></div>
+                <div class="paycheck-amount" id="paycheckAmount">$0</div>
+                <div class="paycheck-hours" id="paycheckHours">0 часов</div>
+            </div>
+
+            <div class="period-nav">
+                <button onclick="prevPeriod()">← Пред.</button>
+                <button onclick="nextPeriod()">След. →</button>
+            </div>
+
+            <div class="card">
+                <h2>📋 Все платёжные периоды</h2>
+                <div class="biweek-list" id="biweekList"></div>
+            </div>
+        </div>
+
+        <!-- Days View -->
+        <div id="days" class="tab-content hidden">
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="number" id="totalVisits">0</div>
-                    <div class="label">Всего визитов</div>
-                </div>
-                <div class="stat-box">
                     <div class="number" id="totalHours">0</div>
-                    <div class="label">Часов работы</div>
+                    <div class="label">Часов всего</div>
                 </div>
                 <div class="stat-box">
                     <div class="number" id="totalEarnings">$0</div>
-                    <div class="label">Заработано ($40/час)</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="uniquePatients">0</div>
-                    <div class="label">Уникальных пациентов</div>
+                    <div class="label">Заработано</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>📅 Статистика по периодам</h2>
+                <h2>📅 Рабочие дни</h2>
                 <div class="filter-row">
-                    <select id="periodFilter" onchange="updatePeriodStats()">
-                        <option value="day">По дням</option>
-                        <option value="week">По неделям</option>
-                        <option value="biweek">По 2 недели</option>
-                        <option value="month">По месяцам</option>
-                        <option value="year">За год</option>
-                    </select>
+                    <input type="date" id="dateFrom" onchange="updateDaysView()">
+                    <input type="date" id="dateTo" onchange="updateDaysView()">
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Период</th>
-                            <th>Визитов</th>
-                            <th>Часов</th>
-                            <th>Заработок</th>
-                        </tr>
-                    </thead>
-                    <tbody id="periodTable"></tbody>
-                </table>
+                <div id="daysContainer"></div>
             </div>
         </div>
 
@@ -202,101 +341,62 @@
             <div class="card">
                 <h2>👥 Поиск пациента</h2>
                 <div class="filter-row">
-                    <input type="text" id="patientSearch" placeholder="Имя или фамилия..." oninput="filterPatients()">
-                    <select id="patientSelect" onchange="showPatientHistory()">
-                        <option value="">— Выберите пациента —</option>
-                    </select>
+                    <input type="text" id="patientSearch" placeholder="Введите имя..." oninput="filterPatients()">
                 </div>
+                <select id="patientSelect" onchange="showPatientHistory()" style="width:100%;margin-bottom:16px;">
+                    <option value="">— Выберите пациента —</option>
+                </select>
 
                 <div id="patientInfo" class="hidden">
                     <div class="patient-summary">
                         <h3 id="patientName"></h3>
-                        <p>📅 Всего визитов: <strong id="patientVisits">0</strong></p>
-                        <p>⏱ Общее время: <strong id="patientHours">0</strong> ч</p>
-                        <p>💰 Заработано: <strong id="patientEarnings" class="money">$0</strong></p>
-                        <p>📆 Период: <span id="patientPeriod"></span></p>
+                        <p>📅 Визитов: <strong id="patientVisits">0</strong> | ⏱ <strong id="patientHours">0</strong>ч | 💰 <strong id="patientEarnings" class="money">$0</strong></p>
+                        <p style="font-size:13px;color:#666;" id="patientPeriod"></p>
                     </div>
-
-                    <h3>История визитов:</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Дата</th>
-                                <th>День</th>
-                                <th>Время</th>
-                                <th>Длительность</th>
-                                <th>Заметки</th>
-                            </tr>
-                        </thead>
-                        <tbody id="patientHistory"></tbody>
-                    </table>
+                    <div id="patientHistoryContainer"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Hours -->
-        <div id="hours" class="tab-content hidden">
+        <!-- Stats -->
+        <div id="stats" class="tab-content hidden">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="number" id="statVisits">0</div>
+                    <div class="label">Всего визитов</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="statHours">0</div>
+                    <div class="label">Часов работы</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="statEarnings">$0</div>
+                    <div class="label">Заработано</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="statPatients">0</div>
+                    <div class="label">Пациентов</div>
+                </div>
+            </div>
+
             <div class="card">
-                <h2>⏱ Рабочие часы</h2>
+                <h2>📊 По периодам</h2>
                 <div class="filter-row">
-                    <label>От: <input type="date" id="dateFrom" onchange="updateHoursStats()"></label>
-                    <label>До: <input type="date" id="dateTo" onchange="updateHoursStats()"></label>
-                    <select id="hoursGroup" onchange="updateHoursStats()">
-                        <option value="day">По дням</option>
+                    <select id="statsPeriod" onchange="updateStats()">
                         <option value="week">По неделям</option>
-                        <option value="biweek">По 2 недели</option>
                         <option value="month">По месяцам</option>
                     </select>
                 </div>
-
-                <div id="hoursSummary" class="patient-summary">
-                    <p>⏱ Часов за период: <strong id="periodHours">0</strong></p>
-                    <p>💰 Заработок: <strong id="periodEarnings" class="money">$0</strong></p>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Период</th>
-                            <th>Часов</th>
-                            <th>Визитов</th>
-                            <th>Заработок</th>
-                            <th>Примечание</th>
-                        </tr>
-                    </thead>
-                    <tbody id="hoursTable"></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- All Visits -->
-        <div id="all" class="tab-content hidden">
-            <div class="card">
-                <h2>📋 Все визиты</h2>
-                <div class="filter-row">
-                    <input type="text" id="visitSearch" placeholder="Поиск..." oninput="filterVisits()">
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Дата</th>
-                            <th>Время</th>
-                            <th>Пациент</th>
-                            <th>Длит.</th>
-                            <th>Заметки</th>
-                        </tr>
-                    </thead>
-                    <tbody id="allVisitsTable"></tbody>
-                </table>
+                <div id="statsTable"></div>
             </div>
         </div>
     </div>
 
     <script>
-    // Data from photos
+    // Data
     const visits = [
         // May 16, 2026 (Saturday)
-        { date: '2026-05-16', day: 'Sat', time: '8:30 AM', duration: 30, patient: 'Lyla Wakut', notes: 'one time fee waived 03/07 TYLW, trx push pull, seratus front back, mid low back retractions rexam chart done online Saturday May 9th blood' },
+        { date: '2026-05-16', day: 'Sat', time: '8:30 AM', duration: 30, patient: 'Lyla Wakut', notes: 'one time fee waived 03/07 TYLW, trx push pull, seratus front back' },
         { date: '2026-05-16', day: 'Sat', time: '9:00 AM', duration: 30, patient: 'Nina Sobierajski', notes: 'pregnant! no charge...my friend' },
         { date: '2026-05-16', day: 'Sat', time: '9:30 AM', duration: 30, patient: 'Meghan Goldman-Miller', notes: 'waived first time 1/27 maintenance care? 15 pt visits left' },
         { date: '2026-05-16', day: 'Sat', time: '10:00 AM', duration: 30, patient: 'Allan Berioso', notes: '' },
@@ -306,12 +406,12 @@
 
         // May 20, 2026 (Wednesday)
         { date: '2026-05-20', day: 'Wed', time: '12:00 PM', duration: 30, patient: 'Destanie Armstrong', notes: 'woff only adjustment and estim or cuppig no pt because she is w/o patient' },
-        { date: '2026-05-20', day: 'Wed', time: '12:30 PM', duration: 30, patient: 'Edith Villanueva', notes: 'Will book more appointments at next visit once she figures out her schedule' },
-        { date: '2026-05-20', day: 'Wed', time: '1:00 PM', duration: 60, patient: 'Jenny Perez', notes: 'patient feeling sick schedule reexam when she will be good w/off all' },
+        { date: '2026-05-20', day: 'Wed', time: '12:30 PM', duration: 30, patient: 'Edith Villanueva', notes: 'Will book more appointments at next visit' },
+        { date: '2026-05-20', day: 'Wed', time: '1:00 PM', duration: 60, patient: 'Jenny Perez', notes: 'patient feeling sick schedule reexam' },
         { date: '2026-05-20', day: 'Wed', time: '2:00 PM', duration: 30, patient: 'Rivera Luis', notes: '' },
         { date: '2026-05-20', day: 'Wed', time: '2:30 PM', duration: 30, patient: 'Yvette Chavez', notes: 'only 35 visits -today visits is 36 W/O per Dr K' },
         { date: '2026-05-20', day: 'Wed', time: '3:30 PM', duration: 30, patient: 'Daniel Spedale', notes: '' },
-        { date: '2026-05-20', day: 'Wed', time: '4:00 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'lien sent 4/27 for email brooks.kittoe@afics.com paying extra $30 foe 1h massages' },
+        { date: '2026-05-20', day: 'Wed', time: '4:00 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 foe 1h massages' },
 
         // May 22, 2026 (Friday)
         { date: '2026-05-22', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '' },
@@ -346,81 +446,97 @@
         { date: '2026-05-27', day: 'Wed', time: '2:00 PM', duration: 30, patient: 'Luis Rivera', notes: '' },
         { date: '2026-05-27', day: 'Wed', time: '2:30 PM', duration: 30, patient: 'Destanie Armstrong', notes: '' },
 
-        // May 28, 2026 (Thursday) - NOTE: работал до 8:30 PM
-        { date: '2026-05-28', day: 'Thu', time: '6:00 PM', duration: 30, patient: 'Olivia Almoukayed', notes: '30 chiro, 60 pt first time', dayNote: 'Работа до 8:30 PM (Angela Ploski 8:00-8:30)' },
-        { date: '2026-05-28', day: 'Thu', time: '6:30 PM', duration: 30, patient: 'Meghan Goldman-Miller', notes: '15 pt visits left PAYS 0$ waived first time 1/27' },
+        // May 28, 2026 (Thursday) - работа до 8:30 PM
+        { date: '2026-05-28', day: 'Thu', time: '6:00 PM', duration: 30, patient: 'Olivia Almoukayed', notes: '30 chiro, 60 pt first time', dayNote: 'Работа до 8:30 PM' },
+        { date: '2026-05-28', day: 'Thu', time: '6:30 PM', duration: 30, patient: 'Meghan Goldman-Miller', notes: '15 pt visits left' },
         { date: '2026-05-28', day: 'Thu', time: '7:00 PM', duration: 30, patient: 'CJ Scarbrough', notes: '' },
-        { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Angela Ploski', notes: '43 visits-left 2 need to billed under her husband she used her not billed' },
-        { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Michael Amore', notes: 'orthotics covered 2 quantity $50 copay under prosthetic device' },
-        { date: '2026-05-28', day: 'Thu', time: '8:00 PM', duration: 30, patient: 'Angela Ploski', notes: '8pm - 8:30pm' },
+        { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Angela Ploski', notes: '' },
+        { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Michael Amore', notes: 'orthotics covered 2 quantity $50 copay' },
+        { date: '2026-05-28', day: 'Thu', time: '8:00 PM', duration: 30, patient: 'Angela Ploski', notes: '8:00-8:30pm' },
 
-        // May 29, 2026 (Friday) - NOTE: START 7:30 AM
-        { date: '2026-05-29', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '', dayNote: 'Фактическое начало 7:30 AM' },
+        // May 29, 2026 (Friday) - START 7:30 AM
+        { date: '2026-05-29', day: 'Fri', time: '7:30 AM', duration: 30, patient: 'Erik Wutke (start)', notes: '', dayNote: 'Начало 7:30 AM' },
+        { date: '2026-05-29', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '8:30 AM', duration: 30, patient: 'Becky Murrow', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '9:00 AM', duration: 30, patient: 'Jeanine Otte', notes: 'memberwebinquiry@amalgamatedbenefits.com did not charge patient -we waiting for number to call maybe $15 co pay' },
-        { date: '2026-05-29', day: 'Fri', time: '9:30 AM', duration: 30, patient: 'Derek Bartsch', notes: 'Derek will schedule more asked him but he said no :D plus baby' },
-        { date: '2026-05-29', day: 'Fri', time: '10:00 AM', duration: 30, patient: 'Amruta Reynolds', notes: 'for today 5/19 we have 15 visits ONLY DR K BILLING HER WHEN SHES SEEING DR SONIA ded met pays $0' },
-        { date: '2026-05-29', day: 'Fri', time: '10:30 AM', duration: 30, patient: 'Theresa Hattar', notes: 'patient is going out of town acupuncture viist' },
+        { date: '2026-05-29', day: 'Fri', time: '9:00 AM', duration: 30, patient: 'Jeanine Otte', notes: '' },
+        { date: '2026-05-29', day: 'Fri', time: '9:30 AM', duration: 30, patient: 'Derek Bartsch', notes: '' },
+        { date: '2026-05-29', day: 'Fri', time: '10:00 AM', duration: 30, patient: 'Amruta Reynolds', notes: '' },
+        { date: '2026-05-29', day: 'Fri', time: '10:30 AM', duration: 30, patient: 'Theresa Hattar', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '11:00 AM', duration: 30, patient: 'Oscar Funes', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '11:30 AM', duration: 30, patient: 'William Olascoaga', notes: 'Patient asked to move his appointment to Tuesday because he won\'t have the paperwork needed until Monday first time waived on 5/22' },
+        { date: '2026-05-29', day: 'Fri', time: '11:30 AM', duration: 30, patient: 'William Olascoaga', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '12:00 PM', duration: 30, patient: 'Vinny Cabrera', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '12:30 PM', duration: 30, patient: 'Anne Cabrera', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '1:00 PM', duration: 60, patient: 'Alex Ochoa', notes: 'no charge for massages bill them for last year' },
-        { date: '2026-05-29', day: 'Fri', time: '2:00 PM', duration: 60, patient: 'Abigail Mata-Hernandez', notes: 'total 40 visits / hindus checked ref # 340782442 has ded then ded met will be 15$ co pay patient will try massage first then will let us know if she wants more' },
-        { date: '2026-05-29', day: 'Fri', time: '10:30 AM', duration: 30, patient: 'Theresa Hattar', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '11:00 AM', duration: 30, patient: 'Oscar Funes', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '11:30 AM', duration: 30, patient: 'break', notes: '30 min break' },
-        { date: '2026-05-29', day: 'Fri', time: '12:00 PM', duration: 30, patient: 'Vinny Cabrera', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '12:30 PM', duration: 30, patient: 'Anne Cabrera', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '1:00 PM', duration: 60, patient: 'Alex Ochoa', notes: '' },
-        { date: '2026-05-29', day: 'Fri', time: '2:00 PM', duration: 60, patient: 'Abigail Mata-Hernandez', notes: '' },
+        { date: '2026-05-29', day: 'Fri', time: '2:00 PM', duration: 60, patient: 'Abigail Mata-Hernandez', notes: 'total 40 visits' },
 
-        // May 30, 2026 (Saturday) - NOTE: START 7:45 AM
-        { date: '2026-05-30', day: 'Sat', time: '8:00 AM', duration: 60, patient: 'Holly Draher', notes: 'CIGNA 7.45 am massage, pays out of pocket', dayNote: 'Фактическое начало 7:45 AM' },
+        // May 30, 2026 (Saturday) - START 7:45 AM
+        { date: '2026-05-30', day: 'Sat', time: '7:45 AM', duration: 15, patient: 'Holly Draher (start)', notes: 'CIGNA 7:45am', dayNote: 'Начало 7:45 AM' },
+        { date: '2026-05-30', day: 'Sat', time: '8:00 AM', duration: 60, patient: 'Holly Draher', notes: 'pays out of pocket' },
         { date: '2026-05-30', day: 'Sat', time: '8:45 AM', duration: 30, patient: 'Casey Jones', notes: '' },
-        { date: '2026-05-30', day: 'Sat', time: '9:15 AM', duration: 60, patient: 'Eloise Sporrong', notes: 'GUARDIAN NEEDS TO BE PRESENT re-exam on 21st ask Dr Sonia how to schedule' },
+        { date: '2026-05-30', day: 'Sat', time: '9:15 AM', duration: 60, patient: 'Eloise Sporrong', notes: 'GUARDIAN NEEDS TO BE PRESENT re-exam on 21st' },
         { date: '2026-05-30', day: 'Sat', time: '10:30 AM', duration: 60, patient: 'Amanda Clemente', notes: 'first time waived' },
         { date: '2026-05-30', day: 'Sat', time: '11:30 AM', duration: 30, patient: 'Sachin Gupta', notes: 'father of our patient Suhaila Meera' },
-        { date: '2026-05-30', day: 'Sat', time: '12:00 PM', duration: 30, patient: 'Stephanie Castro Sousa', notes: 'first time waived fee for late cancellation' },
-        { date: '2026-05-30', day: 'Sat', time: '12:30 PM', duration: 30, patient: 'Harper Paris', notes: 'sent documentation from 5/26 was sent on fax 3125695100 for VA' },
-        { date: '2026-05-30', day: 'Sat', time: '1:00 PM', duration: 30, patient: 'Iain McFarlin', notes: 'only charge co-insurance' },
+        { date: '2026-05-30', day: 'Sat', time: '12:00 PM', duration: 30, patient: 'Stephanie Castro Sousa', notes: '' },
+        { date: '2026-05-30', day: 'Sat', time: '12:30 PM', duration: 30, patient: 'Harper Paris', notes: '' },
+        { date: '2026-05-30', day: 'Sat', time: '1:00 PM', duration: 30, patient: 'Iain McFarlin', notes: '' },
 
-        // June 1, 2026 (Monday) - NOTE: 1:45pm Dr K = 1 hr
-        { date: '2026-06-01', day: 'Mon', time: '1:45 PM', duration: 60, patient: 'Massage for Dr. K', notes: '', dayNote: 'Длительность 1 час (не 30 мин как в системе)' },
-        { date: '2026-06-01', day: 'Mon', time: '1:45 PM', duration: 30, patient: 'Marzena Karwowski', notes: 'canceled the same date late fee waived' },
-        { date: '2026-06-01', day: 'Mon', time: '3:30 PM', duration: 30, patient: 'Daniel Spedale', notes: 'PAYS $0 out of pocket met -4:00' },
-        { date: '2026-06-01', day: 'Mon', time: '4:30 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 foe 1h massages -5:30' },
-        { date: '2026-06-01', day: 'Mon', time: '6:00 PM', duration: 30, patient: 'Michael Amore', notes: 'MASSAGES WRITE OFF next appt we will do ortho scan $50 copay scheduling online orthotics covered 2 quantity $50 copay under prosthetic' },
-        { date: '2026-06-01', day: 'Mon', time: '6:30 PM', duration: 60, patient: 'Nina Sobierajski', notes: 'pregnant! no charge...my friend' },
-        { date: '2026-06-01', day: 'Mon', time: '7:30 PM', duration: 30, patient: 'Jeanine Otte', notes: 'did not charge patient -we waiting for number to call maybe $15 co pay massages only when the Doctors at the office!!!!' },
+        // June 1, 2026 (Monday) - 1:45pm Dr K = 1 hr
+        { date: '2026-06-01', day: 'Mon', time: '1:45 PM', duration: 60, patient: 'Massage for Dr. K', notes: '', dayNote: '1:45pm = 1 час (не 30 мин)' },
+        { date: '2026-06-01', day: 'Mon', time: '3:30 PM', duration: 30, patient: 'Daniel Spedale', notes: 'PAYS $0 out of pocket met' },
+        { date: '2026-06-01', day: 'Mon', time: '4:30 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 foe 1h' },
+        { date: '2026-06-01', day: 'Mon', time: '6:00 PM', duration: 30, patient: 'Michael Amore', notes: '' },
+        { date: '2026-06-01', day: 'Mon', time: '6:30 PM', duration: 60, patient: 'Nina Sobierajski', notes: 'pregnant! no charge' },
+        { date: '2026-06-01', day: 'Mon', time: '7:30 PM', duration: 30, patient: 'Jeanine Otte', notes: '' },
 
-        // June 2, 2026 (Tuesday) - NOTE: until 9:00 PM
+        // June 2, 2026 (Tuesday) - до 9:00 PM
         { date: '2026-06-02', day: 'Tue', time: '6:00 PM', duration: 30, patient: 'Marcie Zawislak', notes: '', dayNote: 'Работа до 9:00 PM' },
         { date: '2026-06-02', day: 'Tue', time: '6:30 PM', duration: 60, patient: 'CJ Scarbrough', notes: '' },
         { date: '2026-06-02', day: 'Tue', time: '7:30 PM', duration: 30, patient: 'William Olascoaga', notes: '' },
         { date: '2026-06-02', day: 'Tue', time: '8:00 PM', duration: 55, patient: 'Khandsuren Tuvshinjargal', notes: '' },
     ];
 
-    // Filter out breaks and duplicates
-    const filteredVisits = visits.filter(v =>
-        v.patient.toLowerCase() !== 'break' &&
-        !v.patient.toLowerCase().includes('break')
-    );
-
     const HOURLY_RATE = 40;
+    let currentBiweekIndex = 0;
 
-    // Helper functions
-    function getWeekNumber(date) {
-        const d = new Date(date);
-        d.setHours(0, 0, 0, 0);
-        d.setDate(d.getDate() + 4 - (d.getDay() || 7));
-        const yearStart = new Date(d.getFullYear(), 0, 1);
-        return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    // Biweekly periods (every 2 weeks, starting from a known payroll date)
+    // Assuming payroll is every other Monday
+    function getBiweeklyPeriods() {
+        const periods = [];
+        const dates = [...new Set(visits.map(v => v.date))].sort();
+        if (dates.length === 0) return periods;
+
+        // Start from first date, round to beginning of week
+        let startDate = new Date(dates[0]);
+        startDate.setDate(startDate.getDate() - startDate.getDay()); // Go to Sunday
+
+        const endDate = new Date(dates[dates.length - 1]);
+        endDate.setDate(endDate.getDate() + 14);
+
+        while (startDate < endDate) {
+            const periodEnd = new Date(startDate);
+            periodEnd.setDate(periodEnd.getDate() + 13);
+
+            periods.push({
+                start: new Date(startDate),
+                end: new Date(periodEnd),
+                startStr: startDate.toISOString().split('T')[0],
+                endStr: periodEnd.toISOString().split('T')[0]
+            });
+
+            startDate.setDate(startDate.getDate() + 14);
+        }
+
+        return periods.reverse(); // Most recent first
     }
 
-    function formatDate(dateStr) {
+    function formatDateShort(date) {
+        return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+    }
+
+    function formatDateFull(dateStr) {
         const d = new Date(dateStr);
-        return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' });
+        const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+        return `${days[d.getDay()]}, ${d.getDate()} ${d.toLocaleDateString('ru-RU', { month: 'short' })}`;
     }
 
     // Tab switching
@@ -430,75 +546,156 @@
         document.getElementById(tabName).classList.remove('hidden');
         event.target.classList.add('active');
 
-        if (tabName === 'dashboard') updateDashboard();
-        if (tabName === 'patients') populatePatientSelect();
-        if (tabName === 'hours') updateHoursStats();
-        if (tabName === 'all') showAllVisits();
+        if (tabName === 'paycheck') updatePaycheck();
+        if (tabName === 'days') updateDaysView();
+        if (tabName === 'patients') populatePatients();
+        if (tabName === 'stats') updateStats();
     }
 
-    // Dashboard
-    function updateDashboard() {
-        const totalVisits = filteredVisits.length;
-        const totalMinutes = filteredVisits.reduce((sum, v) => sum + v.duration, 0);
-        const totalHours = (totalMinutes / 60).toFixed(1);
-        const totalEarnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
-        const uniquePatients = [...new Set(filteredVisits.map(v => v.patient))].length;
+    // Paycheck view
+    function updatePaycheck() {
+        const periods = getBiweeklyPeriods();
 
-        document.getElementById('totalVisits').textContent = totalVisits;
-        document.getElementById('totalHours').textContent = totalHours;
-        document.getElementById('totalEarnings').textContent = '$' + totalEarnings;
-        document.getElementById('uniquePatients').textContent = uniquePatients;
+        // Current period card
+        if (periods.length > 0) {
+            selectBiweek(currentBiweekIndex);
+        }
 
-        updatePeriodStats();
+        // All periods list
+        const listHtml = periods.map((p, i) => {
+            const periodVisits = visits.filter(v => v.date >= p.startStr && v.date <= p.endStr);
+            const totalMinutes = periodVisits.reduce((sum, v) => sum + v.duration, 0);
+            const earnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
+
+            return `
+                <div class="biweek-item ${i === currentBiweekIndex ? 'current' : ''}" onclick="selectBiweek(${i})">
+                    <div class="biweek-dates">${formatDateShort(p.start)} — ${formatDateShort(p.end)}</div>
+                    <div class="biweek-amount">$${earnings}</div>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('biweekList').innerHTML = listHtml;
     }
 
-    function updatePeriodStats() {
-        const period = document.getElementById('periodFilter').value;
-        const grouped = {};
+    function selectBiweek(index) {
+        const periods = getBiweeklyPeriods();
+        if (index < 0 || index >= periods.length) return;
 
-        filteredVisits.forEach(v => {
-            let key;
-            const d = new Date(v.date);
+        currentBiweekIndex = index;
+        const p = periods[index];
 
-            switch(period) {
-                case 'day':
-                    key = v.date;
-                    break;
-                case 'week':
-                    key = `${d.getFullYear()}-W${getWeekNumber(v.date)}`;
-                    break;
-                case 'biweek':
-                    key = `${d.getFullYear()}-BW${Math.ceil(getWeekNumber(v.date) / 2)}`;
-                    break;
-                case 'month':
-                    key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-                    break;
-                case 'year':
-                    key = d.getFullYear().toString();
-                    break;
-            }
+        const periodVisits = visits.filter(v => v.date >= p.startStr && v.date <= p.endStr);
+        const totalMinutes = periodVisits.reduce((sum, v) => sum + v.duration, 0);
+        const hours = (totalMinutes / 60).toFixed(1);
+        const earnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
 
-            if (!grouped[key]) grouped[key] = { visits: 0, minutes: 0 };
-            grouped[key].visits++;
-            grouped[key].minutes += v.duration;
+        document.getElementById('paycheckPeriod').textContent =
+            `${formatDateShort(p.start)} — ${formatDateShort(p.end)}`;
+        document.getElementById('paycheckAmount').textContent = `$${earnings}`;
+        document.getElementById('paycheckHours').textContent = `${hours} часов | ${periodVisits.length} визитов`;
+
+        // Update list selection
+        document.querySelectorAll('.biweek-item').forEach((el, i) => {
+            el.classList.toggle('current', i === index);
+        });
+    }
+
+    function prevPeriod() {
+        const periods = getBiweeklyPeriods();
+        if (currentBiweekIndex < periods.length - 1) {
+            selectBiweek(currentBiweekIndex + 1);
+            updatePaycheck();
+        }
+    }
+
+    function nextPeriod() {
+        if (currentBiweekIndex > 0) {
+            selectBiweek(currentBiweekIndex - 1);
+            updatePaycheck();
+        }
+    }
+
+    // Days view
+    function updateDaysView() {
+        const from = document.getElementById('dateFrom').value;
+        const to = document.getElementById('dateTo').value;
+
+        let filtered = visits;
+        if (from) filtered = filtered.filter(v => v.date >= from);
+        if (to) filtered = filtered.filter(v => v.date <= to);
+
+        // Total stats
+        const totalMinutes = filtered.reduce((sum, v) => sum + v.duration, 0);
+        document.getElementById('totalHours').textContent = (totalMinutes / 60).toFixed(1);
+        document.getElementById('totalEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
+
+        // Group by day
+        const days = {};
+        const dayNotes = {};
+
+        filtered.forEach(v => {
+            if (!days[v.date]) days[v.date] = [];
+            days[v.date].push(v);
+            if (v.dayNote) dayNotes[v.date] = v.dayNote;
         });
 
-        const tbody = document.getElementById('periodTable');
-        tbody.innerHTML = Object.entries(grouped)
+        const daysHtml = Object.entries(days)
             .sort((a, b) => b[0].localeCompare(a[0]))
-            .map(([period, data]) => `
-                <tr>
-                    <td>${period}</td>
-                    <td>${data.visits}</td>
-                    <td>${(data.minutes / 60).toFixed(1)}h</td>
-                    <td class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</td>
-                </tr>
-            `).join('');
+            .map(([date, dayVisits]) => {
+                const totalMin = dayVisits.reduce((sum, v) => sum + v.duration, 0);
+                const earnings = Math.round(totalMin / 60 * HOURLY_RATE);
+                const note = dayNotes[date] || '';
+
+                const visitsHtml = dayVisits
+                    .sort((a, b) => {
+                        // Sort by time
+                        const timeA = a.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => {
+                            let hour = parseInt(h);
+                            if (p.toUpperCase() === 'PM' && hour !== 12) hour += 12;
+                            if (p.toUpperCase() === 'AM' && hour === 12) hour = 0;
+                            return String(hour).padStart(2, '0') + ':' + m;
+                        });
+                        const timeB = b.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => {
+                            let hour = parseInt(h);
+                            if (p.toUpperCase() === 'PM' && hour !== 12) hour += 12;
+                            if (p.toUpperCase() === 'AM' && hour === 12) hour = 0;
+                            return String(hour).padStart(2, '0') + ':' + m;
+                        });
+                        return timeA.localeCompare(timeB);
+                    })
+                    .map(v => `
+                        <div class="visit-item">
+                            <span class="visit-time">${v.time}</span>
+                            <span class="visit-patient">${v.patient}</span>
+                            <span class="visit-duration">${v.duration} мин</span>
+                        </div>
+                        ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
+                    `).join('');
+
+                return `
+                    <div class="day-row" onclick="this.classList.toggle('open')">
+                        <div class="day-header">
+                            <span class="date">${formatDateFull(date)} ${note ? `<span class="note-badge">${note}</span>` : ''}</span>
+                            <div class="stats">
+                                <span>${(totalMin / 60).toFixed(1)}ч</span>
+                                <span class="money">$${earnings}</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                        </div>
+                        <div class="day-details">
+                            ${visitsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+        document.getElementById('daysContainer').innerHTML = daysHtml;
     }
 
-    // Patients
-    function populatePatientSelect() {
-        const patients = [...new Set(filteredVisits.map(v => v.patient))].sort();
+    // Patients view
+    function populatePatients() {
+        const patients = [...new Set(visits.map(v => v.patient))].sort();
         const select = document.getElementById('patientSelect');
         select.innerHTML = '<option value="">— Выберите пациента —</option>' +
             patients.map(p => `<option value="${p}">${p}</option>`).join('');
@@ -506,7 +703,7 @@
 
     function filterPatients() {
         const search = document.getElementById('patientSearch').value.toLowerCase();
-        const patients = [...new Set(filteredVisits.map(v => v.patient))]
+        const patients = [...new Set(visits.map(v => v.patient))]
             .filter(p => p.toLowerCase().includes(search))
             .sort();
 
@@ -524,7 +721,7 @@
             return;
         }
 
-        const patientVisits = filteredVisits.filter(v => v.patient === patient);
+        const patientVisits = visits.filter(v => v.patient === patient);
         const totalMinutes = patientVisits.reduce((sum, v) => sum + v.duration, 0);
         const dates = patientVisits.map(v => v.date).sort();
 
@@ -533,117 +730,100 @@
         document.getElementById('patientHours').textContent = (totalMinutes / 60).toFixed(1);
         document.getElementById('patientEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
         document.getElementById('patientPeriod').textContent =
-            dates.length > 0 ? `${formatDate(dates[0])} — ${formatDate(dates[dates.length - 1])}` : '-';
+            dates.length > 0 ? `${formatDateFull(dates[0])} — ${formatDateFull(dates[dates.length - 1])}` : '-';
 
-        document.getElementById('patientHistory').innerHTML = patientVisits
-            .sort((a, b) => b.date.localeCompare(a.date))
-            .map(v => `
-                <tr>
-                    <td>${formatDate(v.date)}</td>
-                    <td>${v.day}</td>
-                    <td>${v.time}</td>
-                    <td>${v.duration} мин</td>
-                    <td>${v.notes ? `<span class="note">${v.notes.substring(0, 50)}${v.notes.length > 50 ? '...' : ''}</span>` : ''}</td>
-                </tr>
-            `).join('');
+        // Group by day for patient
+        const days = {};
+        patientVisits.forEach(v => {
+            if (!days[v.date]) days[v.date] = [];
+            days[v.date].push(v);
+        });
 
+        const historyHtml = Object.entries(days)
+            .sort((a, b) => b[0].localeCompare(a[0]))
+            .map(([date, dayVisits]) => {
+                const visitsHtml = dayVisits.map(v => `
+                    <div class="visit-item">
+                        <span class="visit-time">${v.time}</span>
+                        <span class="visit-duration">${v.duration} мин</span>
+                    </div>
+                    ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
+                `).join('');
+
+                return `
+                    <div class="day-row open">
+                        <div class="day-header" style="cursor:default;">
+                            <span class="date">${formatDateFull(date)}</span>
+                        </div>
+                        <div class="day-details" style="display:block;">
+                            ${visitsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+        document.getElementById('patientHistoryContainer').innerHTML = historyHtml;
         infoDiv.classList.remove('hidden');
     }
 
-    // Hours
-    function updateHoursStats() {
-        const from = document.getElementById('dateFrom').value;
-        const to = document.getElementById('dateTo').value;
-        const group = document.getElementById('hoursGroup').value;
+    // Stats view
+    function updateStats() {
+        const totalVisits = visits.length;
+        const totalMinutes = visits.reduce((sum, v) => sum + v.duration, 0);
+        const uniquePatients = [...new Set(visits.map(v => v.patient))].length;
 
-        let filtered = filteredVisits;
-        if (from) filtered = filtered.filter(v => v.date >= from);
-        if (to) filtered = filtered.filter(v => v.date <= to);
+        document.getElementById('statVisits').textContent = totalVisits;
+        document.getElementById('statHours').textContent = (totalMinutes / 60).toFixed(1);
+        document.getElementById('statEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
+        document.getElementById('statPatients').textContent = uniquePatients;
 
-        const totalMinutes = filtered.reduce((sum, v) => sum + v.duration, 0);
-        document.getElementById('periodHours').textContent = (totalMinutes / 60).toFixed(1);
-        document.getElementById('periodEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
-
-        // Group by period
+        // Period stats
+        const period = document.getElementById('statsPeriod').value;
         const grouped = {};
-        const dayNotes = {};
 
-        filtered.forEach(v => {
-            let key;
+        visits.forEach(v => {
             const d = new Date(v.date);
+            let key;
 
-            switch(group) {
-                case 'day':
-                    key = v.date;
-                    break;
-                case 'week':
-                    key = `${d.getFullYear()}-W${getWeekNumber(v.date)}`;
-                    break;
-                case 'biweek':
-                    key = `${d.getFullYear()}-BW${Math.ceil(getWeekNumber(v.date) / 2)}`;
-                    break;
-                case 'month':
-                    key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-                    break;
+            if (period === 'week') {
+                const weekStart = new Date(d);
+                weekStart.setDate(d.getDate() - d.getDay());
+                key = weekStart.toISOString().split('T')[0];
+            } else {
+                key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
             }
 
             if (!grouped[key]) grouped[key] = { visits: 0, minutes: 0 };
             grouped[key].visits++;
             grouped[key].minutes += v.duration;
-
-            if (v.dayNote) dayNotes[key] = v.dayNote;
         });
 
-        document.getElementById('hoursTable').innerHTML = Object.entries(grouped)
+        const statsHtml = Object.entries(grouped)
             .sort((a, b) => b[0].localeCompare(a[0]))
             .map(([period, data]) => `
-                <tr>
-                    <td>${period}</td>
-                    <td>${(data.minutes / 60).toFixed(1)}h</td>
-                    <td>${data.visits}</td>
-                    <td class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</td>
-                    <td>${dayNotes[period] ? `<span class="note">${dayNotes[period]}</span>` : ''}</td>
-                </tr>
+                <div class="day-row">
+                    <div class="day-header" style="cursor:default;">
+                        <span>${period}</span>
+                        <div class="stats">
+                            <span>${data.visits} виз.</span>
+                            <span>${(data.minutes / 60).toFixed(1)}ч</span>
+                            <span class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</span>
+                        </div>
+                    </div>
+                </div>
             `).join('');
-    }
 
-    // All visits
-    function showAllVisits() {
-        filterVisits();
-    }
-
-    function filterVisits() {
-        const search = document.getElementById('visitSearch').value.toLowerCase();
-        const filtered = filteredVisits.filter(v =>
-            v.patient.toLowerCase().includes(search) ||
-            v.date.includes(search) ||
-            v.notes.toLowerCase().includes(search)
-        );
-
-        document.getElementById('allVisitsTable').innerHTML = filtered
-            .sort((a, b) => b.date.localeCompare(a.date) || a.time.localeCompare(b.time))
-            .map(v => `
-                <tr>
-                    <td>${formatDate(v.date)}</td>
-                    <td>${v.time}</td>
-                    <td>${v.patient}</td>
-                    <td>${v.duration}м</td>
-                    <td>${v.notes ? `<span class="note">${v.notes.substring(0, 40)}...</span>` : ''}
-                        ${v.dayNote ? `<span class="note">${v.dayNote}</span>` : ''}</td>
-                </tr>
-            `).join('');
+        document.getElementById('statsTable').innerHTML = statsHtml;
     }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
-        updateDashboard();
-
-        // Set default date range
-        const dates = filteredVisits.map(v => v.date).sort();
+        const dates = visits.map(v => v.date).sort();
         if (dates.length > 0) {
             document.getElementById('dateFrom').value = dates[0];
             document.getElementById('dateTo').value = dates[dates.length - 1];
         }
+        updatePaycheck();
     });
     </script>
 </body>
