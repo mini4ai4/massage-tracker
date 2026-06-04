@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman LMT — Massage Tracker</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -377,7 +380,7 @@
                 const timeA = a.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => { let hr = parseInt(h); if (p.toUpperCase() === 'PM' && hr !== 12) hr += 12; if (p.toUpperCase() === 'AM' && hr === 12) hr = 0; return String(hr).padStart(2, '0') + ':' + m; });
                 const timeB = b.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => { let hr = parseInt(h); if (p.toUpperCase() === 'PM' && hr !== 12) hr += 12; if (p.toUpperCase() === 'AM' && hr === 12) hr = 0; return String(hr).padStart(2, '0') + ':' + m; });
                 return timeA.localeCompare(timeB);
-            }).map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-patient">${v.patient}</span><span class="visit-duration">${v.duration} min</span></div>${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}`).join('');
+            }).map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-patient">${v.patient}</span><span class="visit-duration">${v.duration} min</span></div>`).join('');
             return `<div class="day-row" onclick="this.classList.toggle('open')"><div class="day-header"><span class="date">${formatDateFull(date)} ${note ? `<span class="note-badge">${note}</span>` : ''}</span><div class="stats"><span>${(totalMin / 60).toFixed(1)}h</span><span class="money">$${earnings}</span><span class="arrow">▼</span></div></div><div class="day-details">${visitsHtml}</div></div>`;
         }).join('');
         document.getElementById('daysContainer').innerHTML = daysHtml;
@@ -409,7 +412,7 @@
         const days = {};
         patientVisits.forEach(v => { if (!days[v.date]) days[v.date] = []; days[v.date].push(v); });
         const historyHtml = Object.entries(days).sort((a, b) => b[0].localeCompare(a[0])).map(([date, dayVisits]) => {
-            const visitsHtml = dayVisits.map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-duration">${v.duration} min</span></div>${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}`).join('');
+            const visitsHtml = dayVisits.map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-duration">${v.duration} min</span></div>`).join('');
             return `<div class="day-row open"><div class="day-header" style="cursor:default;"><span class="date">${formatDateFull(date)}</span></div><div class="day-details" style="display:block;">${visitsHtml}</div></div>`;
         }).join('');
         document.getElementById('patientHistoryContainer').innerHTML = historyHtml;
