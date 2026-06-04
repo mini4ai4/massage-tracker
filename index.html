@@ -12,281 +12,63 @@
             min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: white; text-align: center; margin-bottom: 20px; font-size: 1.8em; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
         .tab {
-            padding: 10px 16px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.3s;
+            padding: 10px 16px; background: rgba(255,255,255,0.2); color: white;
+            border: none; border-radius: 25px; cursor: pointer; font-size: 13px; transition: all 0.3s;
         }
-        .tab:hover, .tab.active {
-            background: white;
-            color: #667eea;
-        }
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        .card h2 {
-            color: #333;
-            margin-bottom: 16px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 8px;
-            font-size: 1.3em;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .stat-box .number {
-            font-size: 1.8em;
-            font-weight: bold;
-        }
-        .stat-box .label {
-            opacity: 0.9;
-            font-size: 12px;
-        }
-        .filter-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        select, input {
-            padding: 10px 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            flex: 1;
-            min-width: 120px;
-        }
-        select:focus, input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        .day-row {
-            background: #f8f9fa;
-            border-radius: 12px;
-            margin-bottom: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .day-row:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .day-header .date {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-        .day-header .stats {
-            display: flex;
-            gap: 16px;
-            font-size: 14px;
-        }
-        .day-header .arrow {
-            transition: transform 0.3s;
-        }
-        .day-row.open .day-header .arrow {
-            transform: rotate(180deg);
-        }
-        .day-details {
-            display: none;
-            padding: 0;
-            background: white;
-        }
-        .day-row.open .day-details {
-            display: block;
-        }
-        .visit-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 16px;
-            border-bottom: 1px solid #eee;
-            align-items: center;
-        }
-        .visit-item:last-child {
-            border-bottom: none;
-        }
-        .visit-time {
-            color: #667eea;
-            font-weight: 600;
-            min-width: 100px;
-        }
-        .visit-patient {
-            flex: 1;
-            font-weight: 500;
-        }
-        .visit-duration {
-            background: #e8f4fd;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 13px;
-            color: #0066cc;
-        }
-        .visit-notes {
-            font-size: 12px;
-            color: #666;
-            padding: 4px 16px 12px;
-            background: #fffbe6;
-            border-left: 3px solid #ffc107;
-            margin: 0 16px 8px;
-            border-radius: 4px;
-        }
-        .note-badge {
-            background: #fff3cd;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            color: #856404;
-            margin-left: 8px;
-        }
+        .tab:hover, .tab.active { background: white; color: #667eea; }
+        .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .card h2 { color: #333; margin-bottom: 16px; border-bottom: 2px solid #667eea; padding-bottom: 8px; font-size: 1.3em; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px; border-radius: 12px; text-align: center; }
+        .stat-box .number { font-size: 1.8em; font-weight: bold; }
+        .stat-box .label { opacity: 0.9; font-size: 12px; }
+        .filter-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+        select, input { padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; flex: 1; min-width: 120px; }
+        select:focus, input:focus { outline: none; border-color: #667eea; }
+        .day-row { background: #f8f9fa; border-radius: 12px; margin-bottom: 8px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+        .day-row:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .day-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .day-header .date { font-weight: bold; font-size: 1.1em; }
+        .day-header .stats { display: flex; gap: 16px; font-size: 14px; }
+        .day-header .arrow { transition: transform 0.3s; }
+        .day-row.open .day-header .arrow { transform: rotate(180deg); }
+        .day-details { display: none; padding: 0; background: white; }
+        .day-row.open .day-details { display: block; }
+        .visit-item { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .visit-item:last-child { border-bottom: none; }
+        .visit-time { color: #667eea; font-weight: 600; min-width: 140px; }
+        .visit-patient { flex: 1; font-weight: 500; min-width: 120px; }
+        .visit-duration { background: #e8f4fd; padding: 4px 10px; border-radius: 12px; font-size: 13px; color: #0066cc; }
+        .visit-notes { font-size: 12px; color: #666; padding: 4px 16px 12px; background: #fffbe6; border-left: 3px solid #ffc107; margin: 0 16px 8px; border-radius: 4px; }
+        .note-badge { background: #fff3cd; padding: 4px 8px; border-radius: 4px; font-size: 11px; color: #856404; margin-left: 8px; }
         .money { color: #28a745; font-weight: bold; }
         .hidden { display: none; }
-
-        /* Paycheck section */
-        .paycheck-card {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .paycheck-amount {
-            font-size: 3em;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .paycheck-period {
-            opacity: 0.9;
-            font-size: 14px;
-        }
-        .paycheck-hours {
-            font-size: 1.2em;
-            margin-top: 8px;
-        }
-        .period-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        .period-nav button {
-            padding: 10px 20px;
-            border: none;
-            background: #667eea;
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .period-nav button:hover {
-            background: #5a6fd6;
-        }
-        .period-nav button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        .biweek-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .biweek-item {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .biweek-item:hover {
-            background: #e9ecef;
-        }
-        .biweek-item.current {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .biweek-dates {
-            font-weight: 500;
-        }
-        .biweek-amount {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #28a745;
-        }
-        .biweek-item.current .biweek-amount {
-            color: white;
-        }
-
-        /* Patient summary */
-        .patient-summary {
-            background: #e8f4fd;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
-        .patient-summary h3 {
-            color: #0066cc;
-            margin-bottom: 8px;
-        }
-
-        @media (max-width: 600px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .day-header .stats { gap: 10px; font-size: 12px; }
-            .visit-item { flex-wrap: wrap; gap: 8px; }
-            h1 { font-size: 1.5em; }
-        }
+        .paycheck-card { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 20px; border-radius: 16px; margin-bottom: 20px; text-align: center; }
+        .paycheck-amount { font-size: 3em; font-weight: bold; margin: 10px 0; }
+        .paycheck-period { opacity: 0.9; font-size: 14px; }
+        .paycheck-hours { font-size: 1.2em; margin-top: 8px; }
+        .period-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; }
+        .period-nav button { padding: 10px 20px; border: none; background: #667eea; color: white; border-radius: 8px; cursor: pointer; font-size: 14px; }
+        .period-nav button:hover { background: #5a6fd6; }
+        .biweek-list { display: flex; flex-direction: column; gap: 12px; }
+        .biweek-item { background: #f8f9fa; border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.2s; }
+        .biweek-item:hover { background: #e9ecef; }
+        .biweek-item.current { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .biweek-dates { font-weight: 500; }
+        .biweek-amount { font-size: 1.4em; font-weight: bold; color: #28a745; }
+        .biweek-item.current .biweek-amount { color: white; }
+        .patient-summary { background: #e8f4fd; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+        .patient-summary h3 { color: #0066cc; margin-bottom: 8px; }
+        @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr 1fr; } .day-header .stats { gap: 10px; font-size: 12px; } h1 { font-size: 1.5em; } }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>💆 Roman LMT Tracker</h1>
-
         <div class="tabs">
             <button class="tab active" onclick="showTab('paycheck')">💰 Paycheck</button>
             <button class="tab" onclick="showTab('days')">📅 Days</button>
@@ -294,38 +76,27 @@
             <button class="tab" onclick="showTab('stats')">📊 Stats</button>
         </div>
 
-        <!-- Paycheck (Biweekly) -->
         <div id="paycheck" class="tab-content">
             <div class="paycheck-card" id="currentPaycheck">
                 <div class="paycheck-period" id="paycheckPeriod"></div>
                 <div class="paycheck-amount" id="paycheckAmount">$0</div>
-                <div class="paycheck-hours" id="paycheckHours">0 часов</div>
+                <div class="paycheck-hours" id="paycheckHours">0 hours</div>
             </div>
-
             <div class="period-nav">
-                <button onclick="prevPeriod()">← Пред.</button>
-                <button onclick="nextPeriod()">След. →</button>
+                <button onclick="prevPeriod()">← Prev</button>
+                <button onclick="nextPeriod()">Next →</button>
             </div>
-
             <div class="card">
                 <h2>📋 All Pay Periods</h2>
                 <div class="biweek-list" id="biweekList"></div>
             </div>
         </div>
 
-        <!-- Days View -->
         <div id="days" class="tab-content hidden">
             <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="number" id="totalHours">0</div>
-                    <div class="label">Total Hours</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="totalEarnings">$0</div>
-                    <div class="label">Earned</div>
-                </div>
+                <div class="stat-box"><div class="number" id="totalHours">0</div><div class="label">Total Hours</div></div>
+                <div class="stat-box"><div class="number" id="totalEarnings">$0</div><div class="label">Earned</div></div>
             </div>
-
             <div class="card">
                 <h2>📅 Work Days</h2>
                 <div class="filter-row">
@@ -336,7 +107,6 @@
             </div>
         </div>
 
-        <!-- Patients -->
         <div id="patients" class="tab-content hidden">
             <div class="card">
                 <h2>👥 Search Patient</h2>
@@ -346,7 +116,6 @@
                 <select id="patientSelect" onchange="showPatientHistory()" style="width:100%;margin-bottom:16px;">
                     <option value="">— Select patient —</option>
                 </select>
-
                 <div id="patientInfo" class="hidden">
                     <div class="patient-summary">
                         <h3 id="patientName"></h3>
@@ -358,27 +127,13 @@
             </div>
         </div>
 
-        <!-- Stats -->
         <div id="stats" class="tab-content hidden">
             <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="number" id="statVisits">0</div>
-                    <div class="label">Total Visits</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="statHours">0</div>
-                    <div class="label">Work Hours</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="statEarnings">$0</div>
-                    <div class="label">Earned</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="statPatients">0</div>
-                    <div class="label">Patients</div>
-                </div>
+                <div class="stat-box"><div class="number" id="statVisits">0</div><div class="label">Total Visits</div></div>
+                <div class="stat-box"><div class="number" id="statHours">0</div><div class="label">Work Hours</div></div>
+                <div class="stat-box"><div class="number" id="statEarnings">$0</div><div class="label">Earned</div></div>
+                <div class="stat-box"><div class="number" id="statPatients">0</div><div class="label">Patients</div></div>
             </div>
-
             <div class="card">
                 <h2>📊 By Period</h2>
                 <div class="filter-row">
@@ -393,10 +148,10 @@
     </div>
 
     <script>
-    // Data
+    // CORRECTED DATA - carefully verified from photos
     const visits = [
-        // May 16, 2026 (Saturday)
-        { date: '2026-05-16', day: 'Sat', time: '8:30 AM', duration: 30, patient: 'Lyla Wakut', notes: 'one time fee waived 03/07 TYLW, trx push pull, seratus front back' },
+        // ===== SATURDAY MAY 16, 2026 =====
+        { date: '2026-05-16', day: 'Sat', time: '8:30 AM', duration: 30, patient: 'Lyla Wakut', notes: 'one time fee waived 03/07 TYLW, trx push pull, seratus front back, mid low back retractions' },
         { date: '2026-05-16', day: 'Sat', time: '9:00 AM', duration: 30, patient: 'Nina Sobierajski', notes: 'pregnant! no charge...my friend' },
         { date: '2026-05-16', day: 'Sat', time: '9:30 AM', duration: 30, patient: 'Meghan Goldman-Miller', notes: 'waived first time 1/27 maintenance care? 15 pt visits left' },
         { date: '2026-05-16', day: 'Sat', time: '10:00 AM', duration: 30, patient: 'Allan Berioso', notes: '' },
@@ -404,16 +159,16 @@
         { date: '2026-05-16', day: 'Sat', time: '11:00 AM', duration: 60, patient: 'Meagan Sherman Sporrong', notes: 'may 9th move appt to 9.30 or 9.15' },
         { date: '2026-05-16', day: 'Sat', time: '12:00 PM', duration: 30, patient: 'Marina Brule', notes: '' },
 
-        // May 20, 2026 (Wednesday)
+        // ===== WEDNESDAY MAY 20, 2026 =====
         { date: '2026-05-20', day: 'Wed', time: '12:00 PM', duration: 30, patient: 'Destanie Armstrong', notes: 'woff only adjustment and estim or cuppig no pt because she is w/o patient' },
         { date: '2026-05-20', day: 'Wed', time: '12:30 PM', duration: 30, patient: 'Edith Villanueva', notes: 'Will book more appointments at next visit' },
         { date: '2026-05-20', day: 'Wed', time: '1:00 PM', duration: 60, patient: 'Jenny Perez', notes: 'patient feeling sick schedule reexam' },
         { date: '2026-05-20', day: 'Wed', time: '2:00 PM', duration: 30, patient: 'Rivera Luis', notes: '' },
         { date: '2026-05-20', day: 'Wed', time: '2:30 PM', duration: 30, patient: 'Yvette Chavez', notes: 'only 35 visits -today visits is 36 W/O per Dr K' },
         { date: '2026-05-20', day: 'Wed', time: '3:30 PM', duration: 30, patient: 'Daniel Spedale', notes: '' },
-        { date: '2026-05-20', day: 'Wed', time: '4:00 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 foe 1h massages' },
+        { date: '2026-05-20', day: 'Wed', time: '4:00 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 for 1h massages' },
 
-        // May 22, 2026 (Friday)
+        // ===== FRIDAY MAY 22, 2026 =====
         { date: '2026-05-22', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '' },
         { date: '2026-05-22', day: 'Fri', time: '9:00 AM', duration: 30, patient: 'Casey Jones', notes: '' },
         { date: '2026-05-22', day: 'Fri', time: '9:30 AM', duration: 60, patient: 'Philip Ploski', notes: '' },
@@ -421,7 +176,7 @@
         { date: '2026-05-22', day: 'Fri', time: '11:30 AM', duration: 60, patient: 'Laura Selig', notes: '' },
         { date: '2026-05-22', day: 'Fri', time: '12:30 PM', duration: 30, patient: 'Derek Bartsch', notes: '' },
 
-        // May 23, 2026 (Saturday)
+        // ===== SATURDAY MAY 23, 2026 =====
         { date: '2026-05-23', day: 'Sat', time: '8:00 AM', duration: 30, patient: 'Michael Amore', notes: '' },
         { date: '2026-05-23', day: 'Sat', time: '8:30 AM', duration: 30, patient: 'Magdalena Avila', notes: '' },
         { date: '2026-05-23', day: 'Sat', time: '9:00 AM', duration: 30, patient: 'Jeanine Otte', notes: '' },
@@ -431,12 +186,12 @@
         { date: '2026-05-23', day: 'Sat', time: '11:00 AM', duration: 30, patient: 'Stephanie Castro Sousa', notes: '' },
         { date: '2026-05-23', day: 'Sat', time: '11:30 AM', duration: 30, patient: 'Boris Lezaic', notes: '' },
 
-        // May 26, 2026 (Tuesday)
+        // ===== TUESDAY MAY 26, 2026 =====
         { date: '2026-05-26', day: 'Tue', time: '6:00 PM', duration: 30, patient: 'Marcie Zawislak', notes: '' },
         { date: '2026-05-26', day: 'Tue', time: '6:30 PM', duration: 60, patient: 'Jermaine Baker', notes: '' },
         { date: '2026-05-26', day: 'Tue', time: '7:30 PM', duration: 30, patient: 'Holly Draher', notes: '' },
 
-        // May 27, 2026 (Wednesday)
+        // ===== WEDNESDAY MAY 27, 2026 =====
         { date: '2026-05-27', day: 'Wed', time: '9:30 AM', duration: 60, patient: 'Edith Villanueva', notes: '60 minute Massage/Existing Pt' },
         { date: '2026-05-27', day: 'Wed', time: '10:30 AM', duration: 60, patient: 'Brian Kozak', notes: '' },
         { date: '2026-05-27', day: 'Wed', time: '12:00 PM', duration: 30, patient: 'Lyla Wakut', notes: '' },
@@ -446,17 +201,16 @@
         { date: '2026-05-27', day: 'Wed', time: '2:00 PM', duration: 30, patient: 'Luis Rivera', notes: '' },
         { date: '2026-05-27', day: 'Wed', time: '2:30 PM', duration: 30, patient: 'Destanie Armstrong', notes: '' },
 
-        // May 28, 2026 (Thursday) - работа до 8:30 PM
-        { date: '2026-05-28', day: 'Thu', time: '6:00 PM', duration: 30, patient: 'Olivia Almoukayed', notes: '30 chiro, 60 pt first time', dayNote: 'Работа до 8:30 PM' },
+        // ===== THURSDAY MAY 28, 2026 ===== NOTE: worked until 8:30 PM
+        { date: '2026-05-28', day: 'Thu', time: '6:00 PM', duration: 30, patient: 'Olivia Almoukayed', notes: '30 chiro, 60 pt first time', dayNote: 'Worked until 8:30 PM' },
         { date: '2026-05-28', day: 'Thu', time: '6:30 PM', duration: 30, patient: 'Meghan Goldman-Miller', notes: '15 pt visits left' },
         { date: '2026-05-28', day: 'Thu', time: '7:00 PM', duration: 30, patient: 'CJ Scarbrough', notes: '' },
         { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Angela Ploski', notes: '' },
         { date: '2026-05-28', day: 'Thu', time: '7:30 PM', duration: 30, patient: 'Michael Amore', notes: 'orthotics covered 2 quantity $50 copay' },
-        { date: '2026-05-28', day: 'Thu', time: '8:00 PM', duration: 30, patient: 'Angela Ploski', notes: '8:00-8:30pm' },
+        { date: '2026-05-28', day: 'Thu', time: '8:00 PM', duration: 30, patient: 'Angela Ploski', notes: '8:00-8:30 PM' },
 
-        // May 29, 2026 (Friday) - START 7:30 AM
-        { date: '2026-05-29', day: 'Fri', time: '7:30 AM', duration: 30, patient: 'Erik Wutke (start)', notes: '', dayNote: 'Начало 7:30 AM' },
-        { date: '2026-05-29', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '' },
+        // ===== FRIDAY MAY 29, 2026 ===== NOTE: START 7:30 AM
+        { date: '2026-05-29', day: 'Fri', time: '8:00 AM', duration: 60, patient: 'Erik Wutke', notes: '', dayNote: 'Actual start 7:30 AM' },
         { date: '2026-05-29', day: 'Fri', time: '8:30 AM', duration: 30, patient: 'Becky Murrow', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '9:00 AM', duration: 30, patient: 'Jeanine Otte', notes: '' },
         { date: '2026-05-29', day: 'Fri', time: '9:30 AM', duration: 30, patient: 'Derek Bartsch', notes: '' },
@@ -469,9 +223,8 @@
         { date: '2026-05-29', day: 'Fri', time: '1:00 PM', duration: 60, patient: 'Alex Ochoa', notes: 'no charge for massages bill them for last year' },
         { date: '2026-05-29', day: 'Fri', time: '2:00 PM', duration: 60, patient: 'Abigail Mata-Hernandez', notes: 'total 40 visits' },
 
-        // May 30, 2026 (Saturday) - START 7:45 AM
-        { date: '2026-05-30', day: 'Sat', time: '7:45 AM', duration: 15, patient: 'Holly Draher (start)', notes: 'CIGNA 7:45am', dayNote: 'Начало 7:45 AM' },
-        { date: '2026-05-30', day: 'Sat', time: '8:00 AM', duration: 60, patient: 'Holly Draher', notes: 'pays out of pocket' },
+        // ===== SATURDAY MAY 30, 2026 ===== NOTE: START 7:45 AM
+        { date: '2026-05-30', day: 'Sat', time: '8:00 AM', duration: 60, patient: 'Holly Draher', notes: 'CIGNA 7:45am massage, pays out of pocket', dayNote: 'Actual start 7:45 AM' },
         { date: '2026-05-30', day: 'Sat', time: '8:45 AM', duration: 30, patient: 'Casey Jones', notes: '' },
         { date: '2026-05-30', day: 'Sat', time: '9:15 AM', duration: 60, patient: 'Eloise Sporrong', notes: 'GUARDIAN NEEDS TO BE PRESENT re-exam on 21st' },
         { date: '2026-05-30', day: 'Sat', time: '10:30 AM', duration: 60, patient: 'Amanda Clemente', notes: 'first time waived' },
@@ -480,16 +233,16 @@
         { date: '2026-05-30', day: 'Sat', time: '12:30 PM', duration: 30, patient: 'Harper Paris', notes: '' },
         { date: '2026-05-30', day: 'Sat', time: '1:00 PM', duration: 30, patient: 'Iain McFarlin', notes: '' },
 
-        // June 1, 2026 (Monday) - 1:45pm Dr K = 1 hr
-        { date: '2026-06-01', day: 'Mon', time: '1:45 PM', duration: 60, patient: 'Massage for Dr. K', notes: '', dayNote: '1:45pm = 1 час (не 30 мин)' },
+        // ===== MONDAY JUNE 1, 2026 ===== NOTE: 1:45pm Dr K = 1 hour (not 30 min)
+        { date: '2026-06-01', day: 'Mon', time: '1:45 PM', duration: 60, patient: 'Massage for Dr. K', notes: '', dayNote: '1:45pm = 1 hour (not 30 min)' },
         { date: '2026-06-01', day: 'Mon', time: '3:30 PM', duration: 30, patient: 'Daniel Spedale', notes: 'PAYS $0 out of pocket met' },
-        { date: '2026-06-01', day: 'Mon', time: '4:30 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 foe 1h' },
+        { date: '2026-06-01', day: 'Mon', time: '4:30 PM', duration: 60, patient: 'Tetiana Cherepaka', notes: 'paying extra $30 for 1h' },
         { date: '2026-06-01', day: 'Mon', time: '6:00 PM', duration: 30, patient: 'Michael Amore', notes: '' },
         { date: '2026-06-01', day: 'Mon', time: '6:30 PM', duration: 60, patient: 'Nina Sobierajski', notes: 'pregnant! no charge' },
         { date: '2026-06-01', day: 'Mon', time: '7:30 PM', duration: 30, patient: 'Jeanine Otte', notes: '' },
 
-        // June 2, 2026 (Tuesday) - до 9:00 PM
-        { date: '2026-06-02', day: 'Tue', time: '6:00 PM', duration: 30, patient: 'Marcie Zawislak', notes: '', dayNote: 'Работа до 9:00 PM' },
+        // ===== TUESDAY JUNE 2, 2026 ===== NOTE: worked until 9:00 PM
+        { date: '2026-06-02', day: 'Tue', time: '6:00 PM', duration: 30, patient: 'Marcie Zawislak', notes: '', dayNote: 'Worked until 9:00 PM' },
         { date: '2026-06-02', day: 'Tue', time: '6:30 PM', duration: 60, patient: 'CJ Scarbrough', notes: '' },
         { date: '2026-06-02', day: 'Tue', time: '7:30 PM', duration: 30, patient: 'William Olascoaga', notes: '' },
         { date: '2026-06-02', day: 'Tue', time: '8:00 PM', duration: 55, patient: 'Khandsuren Tuvshinjargal', notes: '' },
@@ -498,380 +251,193 @@
     const HOURLY_RATE = 40;
     let currentBiweekIndex = 0;
 
-    // Format time range: "6:00 PM" + 30min = "6:00 - 6:30 PM"
-    function formatTimeRange(startTime, durationMin) {
-        // Parse start time
-        const match = startTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
-        if (!match) return startTime;
-
-        let hours = parseInt(match[1]);
-        let minutes = parseInt(match[2]);
-        const period = match[3].toUpperCase();
-
-        // Convert to 24h for calculation
-        let hours24 = hours;
-        if (period === 'PM' && hours !== 12) hours24 += 12;
-        if (period === 'AM' && hours === 12) hours24 = 0;
-
-        // Add duration
-        const totalMinutes = hours24 * 60 + minutes + durationMin;
-        let endHours24 = Math.floor(totalMinutes / 60) % 24;
-        let endMinutes = totalMinutes % 60;
-
-        // Convert back to 12h
-        let endPeriod = endHours24 >= 12 ? 'PM' : 'AM';
-        let endHours12 = endHours24 % 12;
-        if (endHours12 === 0) endHours12 = 12;
-
-        const startStr = `${hours}:${String(minutes).padStart(2, '0')}`;
-        const endStr = `${endHours12}:${String(endMinutes).padStart(2, '0')} ${endPeriod}`;
-
-        return `${startStr} - ${endStr}`;
-    }
-
     // Biweekly periods: 1-15 and 16-end of month
     function getBiweeklyPeriods() {
         const periods = [];
         const dates = [...new Set(visits.map(v => v.date))].sort();
         if (dates.length === 0) return periods;
 
-        // Get min and max months
         const minDate = new Date(dates[0]);
         const maxDate = new Date(dates[dates.length - 1]);
 
-        // Generate periods from min to max month
         let year = minDate.getFullYear();
         let month = minDate.getMonth();
 
         while (year < maxDate.getFullYear() || (year === maxDate.getFullYear() && month <= maxDate.getMonth())) {
-            // First half: 1-15
             const firstStart = new Date(year, month, 1);
             const firstEnd = new Date(year, month, 15);
-
-            // Second half: 16-end
             const secondStart = new Date(year, month, 16);
-            const secondEnd = new Date(year, month + 1, 0); // Last day of month
+            const secondEnd = new Date(year, month + 1, 0);
 
             periods.push({
-                start: firstStart,
-                end: firstEnd,
+                start: firstStart, end: firstEnd,
                 startStr: firstStart.toISOString().split('T')[0],
                 endStr: firstEnd.toISOString().split('T')[0],
                 label: `1-15 ${firstStart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`
             });
-
             periods.push({
-                start: secondStart,
-                end: secondEnd,
+                start: secondStart, end: secondEnd,
                 startStr: secondStart.toISOString().split('T')[0],
                 endStr: secondEnd.toISOString().split('T')[0],
                 label: `16-${secondEnd.getDate()} ${secondStart.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}`
             });
 
             month++;
-            if (month > 11) {
-                month = 0;
-                year++;
-            }
+            if (month > 11) { month = 0; year++; }
         }
-
-        return periods.reverse(); // Most recent first
+        return periods.reverse();
     }
 
-    function formatDateShort(date) {
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
-
+    function formatDateShort(date) { return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
     function formatDateFull(dateStr) {
         const d = new Date(dateStr);
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return `${days[d.getDay()]}, ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
     }
 
-    // Tab switching
+    function formatTimeRange(startTime, durationMin) {
+        const match = startTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
+        if (!match) return startTime;
+        let hours = parseInt(match[1]), minutes = parseInt(match[2]);
+        const period = match[3].toUpperCase();
+        let hours24 = hours;
+        if (period === 'PM' && hours !== 12) hours24 += 12;
+        if (period === 'AM' && hours === 12) hours24 = 0;
+        const totalMinutes = hours24 * 60 + minutes + durationMin;
+        let endHours24 = Math.floor(totalMinutes / 60) % 24;
+        let endMinutes = totalMinutes % 60;
+        let endPeriod = endHours24 >= 12 ? 'PM' : 'AM';
+        let endHours12 = endHours24 % 12;
+        if (endHours12 === 0) endHours12 = 12;
+        return `${hours}:${String(minutes).padStart(2, '0')} - ${endHours12}:${String(endMinutes).padStart(2, '0')} ${endPeriod}`;
+    }
+
     function showTab(tabName) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
         document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
         document.getElementById(tabName).classList.remove('hidden');
         event.target.classList.add('active');
-
         if (tabName === 'paycheck') updatePaycheck();
         if (tabName === 'days') updateDaysView();
         if (tabName === 'patients') populatePatients();
         if (tabName === 'stats') updateStats();
     }
 
-    // Paycheck view
     function updatePaycheck() {
         const periods = getBiweeklyPeriods();
-
-        // Current period card
-        if (periods.length > 0) {
-            selectBiweek(currentBiweekIndex);
-        }
-
-        // All periods list
+        if (periods.length > 0) selectBiweek(currentBiweekIndex);
         const listHtml = periods.map((p, i) => {
             const periodVisits = visits.filter(v => v.date >= p.startStr && v.date <= p.endStr);
             const totalMinutes = periodVisits.reduce((sum, v) => sum + v.duration, 0);
             const earnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
-
-            return `
-                <div class="biweek-item ${i === currentBiweekIndex ? 'current' : ''}" onclick="selectBiweek(${i})">
-                    <div class="biweek-dates">${p.label || (formatDateShort(p.start) + ' — ' + formatDateShort(p.end))}</div>
-                    <div class="biweek-amount">$${earnings}</div>
-                </div>
-            `;
+            return `<div class="biweek-item ${i === currentBiweekIndex ? 'current' : ''}" onclick="selectBiweek(${i})">
+                <div class="biweek-dates">${p.label}</div><div class="biweek-amount">$${earnings}</div></div>`;
         }).join('');
-
         document.getElementById('biweekList').innerHTML = listHtml;
     }
 
     function selectBiweek(index) {
         const periods = getBiweeklyPeriods();
         if (index < 0 || index >= periods.length) return;
-
         currentBiweekIndex = index;
         const p = periods[index];
-
         const periodVisits = visits.filter(v => v.date >= p.startStr && v.date <= p.endStr);
         const totalMinutes = periodVisits.reduce((sum, v) => sum + v.duration, 0);
         const hours = (totalMinutes / 60).toFixed(1);
         const earnings = Math.round(totalMinutes / 60 * HOURLY_RATE);
-
-        document.getElementById('paycheckPeriod').textContent = p.label ||
-            `${formatDateShort(p.start)} — ${formatDateShort(p.end)}`;
+        document.getElementById('paycheckPeriod').textContent = p.label;
         document.getElementById('paycheckAmount').textContent = `$${earnings}`;
         document.getElementById('paycheckHours').textContent = `${hours} hours | ${periodVisits.length} visits`;
-
-        // Update list selection
-        document.querySelectorAll('.biweek-item').forEach((el, i) => {
-            el.classList.toggle('current', i === index);
-        });
+        document.querySelectorAll('.biweek-item').forEach((el, i) => el.classList.toggle('current', i === index));
     }
 
-    function prevPeriod() {
-        const periods = getBiweeklyPeriods();
-        if (currentBiweekIndex < periods.length - 1) {
-            selectBiweek(currentBiweekIndex + 1);
-            updatePaycheck();
-        }
-    }
+    function prevPeriod() { const periods = getBiweeklyPeriods(); if (currentBiweekIndex < periods.length - 1) { selectBiweek(currentBiweekIndex + 1); updatePaycheck(); } }
+    function nextPeriod() { if (currentBiweekIndex > 0) { selectBiweek(currentBiweekIndex - 1); updatePaycheck(); } }
 
-    function nextPeriod() {
-        if (currentBiweekIndex > 0) {
-            selectBiweek(currentBiweekIndex - 1);
-            updatePaycheck();
-        }
-    }
-
-    // Days view
     function updateDaysView() {
         const from = document.getElementById('dateFrom').value;
         const to = document.getElementById('dateTo').value;
-
         let filtered = visits;
         if (from) filtered = filtered.filter(v => v.date >= from);
         if (to) filtered = filtered.filter(v => v.date <= to);
-
-        // Total stats
         const totalMinutes = filtered.reduce((sum, v) => sum + v.duration, 0);
         document.getElementById('totalHours').textContent = (totalMinutes / 60).toFixed(1);
         document.getElementById('totalEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
-
-        // Group by day
-        const days = {};
-        const dayNotes = {};
-
+        const days = {}, dayNotes = {};
         filtered.forEach(v => {
             if (!days[v.date]) days[v.date] = [];
             days[v.date].push(v);
             if (v.dayNote) dayNotes[v.date] = v.dayNote;
         });
-
-        const daysHtml = Object.entries(days)
-            .sort((a, b) => b[0].localeCompare(a[0]))
-            .map(([date, dayVisits]) => {
-                const totalMin = dayVisits.reduce((sum, v) => sum + v.duration, 0);
-                const earnings = Math.round(totalMin / 60 * HOURLY_RATE);
-                const note = dayNotes[date] || '';
-
-                const visitsHtml = dayVisits
-                    .sort((a, b) => {
-                        // Sort by time
-                        const timeA = a.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => {
-                            let hour = parseInt(h);
-                            if (p.toUpperCase() === 'PM' && hour !== 12) hour += 12;
-                            if (p.toUpperCase() === 'AM' && hour === 12) hour = 0;
-                            return String(hour).padStart(2, '0') + ':' + m;
-                        });
-                        const timeB = b.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => {
-                            let hour = parseInt(h);
-                            if (p.toUpperCase() === 'PM' && hour !== 12) hour += 12;
-                            if (p.toUpperCase() === 'AM' && hour === 12) hour = 0;
-                            return String(hour).padStart(2, '0') + ':' + m;
-                        });
-                        return timeA.localeCompare(timeB);
-                    })
-                    .map(v => `
-                        <div class="visit-item">
-                            <span class="visit-time">${formatTimeRange(v.time, v.duration)}</span>
-                            <span class="visit-patient">${v.patient}</span>
-                            <span class="visit-duration">${v.duration} min</span>
-                        </div>
-                        ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
-                    `).join('');
-
-                return `
-                    <div class="day-row" onclick="this.classList.toggle('open')">
-                        <div class="day-header">
-                            <span class="date">${formatDateFull(date)} ${note ? `<span class="note-badge">${note}</span>` : ''}</span>
-                            <div class="stats">
-                                <span>${(totalMin / 60).toFixed(1)}ч</span>
-                                <span class="money">$${earnings}</span>
-                                <span class="arrow">▼</span>
-                            </div>
-                        </div>
-                        <div class="day-details">
-                            ${visitsHtml}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
+        const daysHtml = Object.entries(days).sort((a, b) => b[0].localeCompare(a[0])).map(([date, dayVisits]) => {
+            const totalMin = dayVisits.reduce((sum, v) => sum + v.duration, 0);
+            const earnings = Math.round(totalMin / 60 * HOURLY_RATE);
+            const note = dayNotes[date] || '';
+            const visitsHtml = dayVisits.sort((a, b) => {
+                const timeA = a.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => { let hr = parseInt(h); if (p.toUpperCase() === 'PM' && hr !== 12) hr += 12; if (p.toUpperCase() === 'AM' && hr === 12) hr = 0; return String(hr).padStart(2, '0') + ':' + m; });
+                const timeB = b.time.replace(/(\d+):(\d+)\s*(AM|PM)/i, (_, h, m, p) => { let hr = parseInt(h); if (p.toUpperCase() === 'PM' && hr !== 12) hr += 12; if (p.toUpperCase() === 'AM' && hr === 12) hr = 0; return String(hr).padStart(2, '0') + ':' + m; });
+                return timeA.localeCompare(timeB);
+            }).map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-patient">${v.patient}</span><span class="visit-duration">${v.duration} min</span></div>${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}`).join('');
+            return `<div class="day-row" onclick="this.classList.toggle('open')"><div class="day-header"><span class="date">${formatDateFull(date)} ${note ? `<span class="note-badge">${note}</span>` : ''}</span><div class="stats"><span>${(totalMin / 60).toFixed(1)}h</span><span class="money">$${earnings}</span><span class="arrow">▼</span></div></div><div class="day-details">${visitsHtml}</div></div>`;
+        }).join('');
         document.getElementById('daysContainer').innerHTML = daysHtml;
     }
 
-    // Patients view
     function populatePatients() {
         const patients = [...new Set(visits.map(v => v.patient))].sort();
-        const select = document.getElementById('patientSelect');
-        select.innerHTML = '<option value="">— Select patient —</option>' +
-            patients.map(p => `<option value="${p}">${p}</option>`).join('');
+        document.getElementById('patientSelect').innerHTML = '<option value="">— Select patient —</option>' + patients.map(p => `<option value="${p}">${p}</option>`).join('');
     }
 
     function filterPatients() {
         const search = document.getElementById('patientSearch').value.toLowerCase();
-        const patients = [...new Set(visits.map(v => v.patient))]
-            .filter(p => p.toLowerCase().includes(search))
-            .sort();
-
-        const select = document.getElementById('patientSelect');
-        select.innerHTML = '<option value="">— Select patient —</option>' +
-            patients.map(p => `<option value="${p}">${p}</option>`).join('');
+        const patients = [...new Set(visits.map(v => v.patient))].filter(p => p.toLowerCase().includes(search)).sort();
+        document.getElementById('patientSelect').innerHTML = '<option value="">— Select patient —</option>' + patients.map(p => `<option value="${p}">${p}</option>`).join('');
     }
 
     function showPatientHistory() {
         const patient = document.getElementById('patientSelect').value;
         const infoDiv = document.getElementById('patientInfo');
-
-        if (!patient) {
-            infoDiv.classList.add('hidden');
-            return;
-        }
-
+        if (!patient) { infoDiv.classList.add('hidden'); return; }
         const patientVisits = visits.filter(v => v.patient === patient);
         const totalMinutes = patientVisits.reduce((sum, v) => sum + v.duration, 0);
         const dates = patientVisits.map(v => v.date).sort();
-
         document.getElementById('patientName').textContent = patient;
         document.getElementById('patientVisits').textContent = patientVisits.length;
         document.getElementById('patientHours').textContent = (totalMinutes / 60).toFixed(1);
         document.getElementById('patientEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
-        document.getElementById('patientPeriod').textContent =
-            dates.length > 0 ? `${formatDateFull(dates[0])} — ${formatDateFull(dates[dates.length - 1])}` : '-';
-
-        // Group by day for patient
+        document.getElementById('patientPeriod').textContent = dates.length > 0 ? `${formatDateFull(dates[0])} — ${formatDateFull(dates[dates.length - 1])}` : '-';
         const days = {};
-        patientVisits.forEach(v => {
-            if (!days[v.date]) days[v.date] = [];
-            days[v.date].push(v);
-        });
-
-        const historyHtml = Object.entries(days)
-            .sort((a, b) => b[0].localeCompare(a[0]))
-            .map(([date, dayVisits]) => {
-                const visitsHtml = dayVisits.map(v => `
-                    <div class="visit-item">
-                        <span class="visit-time">${v.time}</span>
-                        <span class="visit-duration">${v.duration} min</span>
-                    </div>
-                    ${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}
-                `).join('');
-
-                return `
-                    <div class="day-row open">
-                        <div class="day-header" style="cursor:default;">
-                            <span class="date">${formatDateFull(date)}</span>
-                        </div>
-                        <div class="day-details" style="display:block;">
-                            ${visitsHtml}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
+        patientVisits.forEach(v => { if (!days[v.date]) days[v.date] = []; days[v.date].push(v); });
+        const historyHtml = Object.entries(days).sort((a, b) => b[0].localeCompare(a[0])).map(([date, dayVisits]) => {
+            const visitsHtml = dayVisits.map(v => `<div class="visit-item"><span class="visit-time">${formatTimeRange(v.time, v.duration)}</span><span class="visit-duration">${v.duration} min</span></div>${v.notes ? `<div class="visit-notes">${v.notes}</div>` : ''}`).join('');
+            return `<div class="day-row open"><div class="day-header" style="cursor:default;"><span class="date">${formatDateFull(date)}</span></div><div class="day-details" style="display:block;">${visitsHtml}</div></div>`;
+        }).join('');
         document.getElementById('patientHistoryContainer').innerHTML = historyHtml;
         infoDiv.classList.remove('hidden');
     }
 
-    // Stats view
     function updateStats() {
         const totalVisits = visits.length;
         const totalMinutes = visits.reduce((sum, v) => sum + v.duration, 0);
         const uniquePatients = [...new Set(visits.map(v => v.patient))].length;
-
         document.getElementById('statVisits').textContent = totalVisits;
         document.getElementById('statHours').textContent = (totalMinutes / 60).toFixed(1);
         document.getElementById('statEarnings').textContent = '$' + Math.round(totalMinutes / 60 * HOURLY_RATE);
         document.getElementById('statPatients').textContent = uniquePatients;
-
-        // Period stats
         const period = document.getElementById('statsPeriod').value;
         const grouped = {};
-
         visits.forEach(v => {
             const d = new Date(v.date);
-            let key;
-
-            if (period === 'week') {
-                const weekStart = new Date(d);
-                weekStart.setDate(d.getDate() - d.getDay());
-                key = weekStart.toISOString().split('T')[0];
-            } else {
-                key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-            }
-
+            let key = period === 'week' ? (() => { const ws = new Date(d); ws.setDate(d.getDate() - d.getDay()); return ws.toISOString().split('T')[0]; })() : `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
             if (!grouped[key]) grouped[key] = { visits: 0, minutes: 0 };
-            grouped[key].visits++;
-            grouped[key].minutes += v.duration;
+            grouped[key].visits++; grouped[key].minutes += v.duration;
         });
-
-        const statsHtml = Object.entries(grouped)
-            .sort((a, b) => b[0].localeCompare(a[0]))
-            .map(([period, data]) => `
-                <div class="day-row">
-                    <div class="day-header" style="cursor:default;">
-                        <span>${period}</span>
-                        <div class="stats">
-                            <span>${data.visits} vis</span>
-                            <span>${(data.minutes / 60).toFixed(1)}ч</span>
-                            <span class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</span>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-        document.getElementById('statsTable').innerHTML = statsHtml;
+        document.getElementById('statsTable').innerHTML = Object.entries(grouped).sort((a, b) => b[0].localeCompare(a[0])).map(([p, data]) => `<div class="day-row"><div class="day-header" style="cursor:default;"><span>${p}</span><div class="stats"><span>${data.visits} vis</span><span>${(data.minutes / 60).toFixed(1)}h</span><span class="money">$${Math.round(data.minutes / 60 * HOURLY_RATE)}</span></div></div></div>`).join('');
     }
 
-    // Initialize
     document.addEventListener('DOMContentLoaded', () => {
         const dates = visits.map(v => v.date).sort();
-        if (dates.length > 0) {
-            document.getElementById('dateFrom').value = dates[0];
-            document.getElementById('dateTo').value = dates[dates.length - 1];
-        }
+        if (dates.length > 0) { document.getElementById('dateFrom').value = dates[0]; document.getElementById('dateTo').value = dates[dates.length - 1]; }
         updatePaycheck();
     });
     </script>
