@@ -142,6 +142,7 @@
                 <div class="filter-row">
                     <select id="statsPeriod" onchange="updateStats()">
                         <option value="week">By Week</option>
+                        <option value="2weeks">By 2 Weeks</option>
                         <option value="month">By Month</option>
                     </select>
                 </div>
@@ -432,8 +433,25 @@
         const period = document.getElementById('statsPeriod').value;
         const grouped = {};
         visits.forEach(v => {
-            const d = new Date(v.date);
-            let key = period === 'week' ? (() => { const ws = new Date(d); ws.setDate(d.getDate() - d.getDay()); return ws.toISOString().split('T')[0]; })() : `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+            const parts = v.date.split('-');
+            const d = new Date(parts[0], parts[1] - 1, parts[2]);
+            let key;
+            if (period === 'week') {
+                const ws = new Date(d);
+                ws.setDate(d.getDate() - d.getDay());
+                const we = new Date(ws);
+                we.setDate(ws.getDate() + 6);
+                key = `${ws.getFullYear()}/${String(ws.getMonth()+1).padStart(2,'0')}/${String(ws.getDate()).padStart(2,'0')} - ${we.getFullYear()}/${String(we.getMonth()+1).padStart(2,'0')}/${String(we.getDate()).padStart(2,'0')}`;
+            } else if (period === '2weeks') {
+                const ws = new Date(d);
+                ws.setDate(d.getDate() - d.getDay());
+                const weekNum = Math.floor((ws.getTime() / (7 * 24 * 60 * 60 * 1000)));
+                const biweekStart = new Date((weekNum - (weekNum % 2)) * 7 * 24 * 60 * 60 * 1000);
+                const biweekEnd = new Date(biweekStart.getTime() + 13 * 24 * 60 * 60 * 1000);
+                key = `${biweekStart.getFullYear()}/${String(biweekStart.getMonth()+1).padStart(2,'0')}/${String(biweekStart.getDate()).padStart(2,'0')} - ${biweekEnd.getFullYear()}/${String(biweekEnd.getMonth()+1).padStart(2,'0')}/${String(biweekEnd.getDate()).padStart(2,'0')}`;
+            } else {
+                key = `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}`;
+            }
             if (!grouped[key]) grouped[key] = { visits: 0, minutes: 0 };
             grouped[key].visits++; grouped[key].minutes += v.duration;
         });
