@@ -436,7 +436,18 @@
     ];
 
     const HOURLY_RATE = 40;
-    let currentBiweekIndex = 0;
+    let currentBiweekIndex = null; // null = auto-select the period containing today
+
+    function defaultBiweekIndex(periods) {
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        for (let i = 0; i < periods.length; i++) {
+            if (periods[i].start <= today && today <= periods[i].end) return i;
+        }
+        for (let i = 0; i < periods.length; i++) {
+            if (periods[i].start <= today) return i;
+        }
+        return 0;
+    }
 
     // Biweekly periods: 1-15 and 16-end of month
     function getBiweeklyPeriods() {
@@ -514,6 +525,7 @@
 
     function updatePaycheck() {
         const periods = getBiweeklyPeriods();
+        if (currentBiweekIndex === null) currentBiweekIndex = defaultBiweekIndex(periods);
         if (periods.length > 0) selectBiweek(currentBiweekIndex);
         const listHtml = periods.map((p, i) => {
             const periodVisits = visits.filter(v => v.date >= p.startStr && v.date <= p.endStr);
